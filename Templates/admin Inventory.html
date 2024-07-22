@@ -1,0 +1,289 @@
+{% extends 'admin_nav.html' %}
+
+{% block main %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        } */
+
+        .container {
+            max-width: 1200px;
+            height: 700px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .content {
+            margin-top: 20px;
+        }
+
+        .content h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+        .card {
+            flex: 1 1 200px;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            opacity: 0.95;
+        }
+
+        .card-body {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        .card-title a{
+            text-decoration: none;
+        }
+
+        .card p {
+            font-size: 24px;
+            margin: 5px 0;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                flex: 1 1 45%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                flex: 1 1 100%;
+            }
+        }
+
+        .sidebar {
+            background-color: rgb(46, 45, 45);
+            height: 100vh;
+            padding: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200px;
+        }
+
+        .sidebar .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .sidebar .nav-link {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .sidebar .nav-link.active {
+            background-color: #fff;
+            border-radius: 5px;
+            color: #d4af37;
+        }
+
+        .sidebar .nav-link:hover {
+            background-color: #fff;
+            color: #d4af37;
+        }
+
+        .nav-link i {
+            margin-right: 10px;
+        }
+
+        .main-content {
+            margin-left: 220px;
+            padding: 20px;
+        }
+
+        .header {
+            padding: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .dashboard h2 {
+            color: red;
+        }
+
+        .dashboard h3 {
+            border-top: 1px solid green;
+            border-bottom: 1px solid green;
+            color: green;
+            text-align: center;
+            padding: 7px;
+        }
+        /* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Montserrat:wght@400&display=swap');
+
+
+.logo-link {
+    text-decoration: none;
+}
+
+.logo {
+    font-family: 'Arial', sans-serif;
+   
+    background-color: #f4f4f9; /* Light background for contrast */
+    text-align: center;
+    padding: 5px 30px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* transition: transform 0.3s, box-shadow 0.3s; */
+ 
+}
+
+.logo h4 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    color: #d4af37;
+    margin: 0;
+    padding: 0;
+}
+
+.logo p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    color: #333;
+    margin: 0;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.logo:hover {
+    /* transform: translateY(-5px); */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  
+}
+@media (max-width: 768px) {
+    .logo {
+
+    padding: 2px 20px;
+
+ 
+}
+}
+ 
+    </style>
+</head>
+<body>
+    <!-- <div class="container-fluid">
+        <div class="row"> -->
+            <!-- <div class="col-md-2 sidebar">
+                <a href="/Admin panel/dashboard/" class="logo-link" style="text-decoration: none;">
+                    <div class="logo">
+                        <h4>Ashvin</h4>
+                        <p>Watertechnology</p>
+                    </div>
+                </a>
+                
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin panel/orders/"><i class="fas fa-shopping-cart"></i> Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin panel/"><i class="fas fa-credit-card"></i> Payment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin panel/Inventory/"><i class="fas fa-boxes"></i> Inventory</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin panel/Add_product_details/"><i class="fas fa-box-open"></i> Product</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin panel/Edit_banner/"><i class="fas fa-image"></i> Banner</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin panel/"><i class="fas fa-undo"></i> Returns</a>
+                    </li>
+                </ul>
+            </div> -->
+            <!-- <div class="col-md-10 main-content"> -->
+                <!-- <h2 style="text-align: center; border-bottom: 1px solid green; border-top: 1px solid green; color: 
+                green;">Inventory Management</h2> -->
+                <div class="container">
+                    <main class="content">
+                        
+                        <p>Monitor and manage your stock levels, active and inactive products, and track out-of-stock items.</p>
+                        <section class="stats">
+                            <a href="/admin/panel/Active_product/" class="card"  style="text-decoration: none;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Active Orders</h5>
+                                    <hr>
+                                    <p>{{ active_order_count }}</p>
+                                </div>
+                            </a>
+                            <a href="/admin/panel/Inactive_product/" class="card"  style="text-decoration: none;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Inactive Orders</h5>
+                                    <hr>
+                                    <p>{{ inactive_order_count }}</p>
+                                </div>
+                            </a>
+                            <a href="/admin/panel/Outof_Stock/" class="card"  style="text-decoration: none;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Out of Stock</h5>
+                                    <hr>
+                                    <p>{{ outofstock_order_count }}</p>
+                                </div>
+                            </a>
+                            <a href="/admin/panel/In_Stock/" class="card" style="text-decoration: none;">
+                                <div class="card-body">
+                                    <h5 class="card-title">In Stock</h5>
+                                    <hr>
+                                    <p>{{ Instock_order_count }}</p>
+                                </div>
+                            </a>
+                        </section>
+                    </main>
+                </div>
+            <!-- </div> -->
+        <!-- </div> -->
+    <!-- </div> -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock %}

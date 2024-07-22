@@ -1,0 +1,306 @@
+{% include 'header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 40px;
+            text-align: center;
+        }
+
+        h2 {
+            font-weight: 200;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .product-card {
+            border-radius: 5px;
+            width: 300px;
+            margin: 15px;
+            text-align: center;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 230px;
+            object-fit: contain;
+        }
+
+        .product-card h3 {
+            margin: 10px 0;
+        }
+
+        .product-card p {
+            color: #333;
+        }
+
+        .product-card span {
+            text-decoration: line-through;
+            color: #888;
+        }
+
+        .button-container {
+          
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .button1 {
+            background-color: #23548a;
+            color: #fff;
+            border: none;
+            padding: 7px 17px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 25px;
+        }
+
+        .button1:hover {
+            background-color: #0056b3;
+        }
+
+        .cookie-banner {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .cookie-banner .button {
+            border: 1px solid #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .cookie-banner .button:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            .product-card {
+                width: calc(100% - 30px);
+            }
+            .button1 {
+                font-size: 10px;
+                padding: 10px 30px;
+            }
+        }
+
+        .faq-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #ccc;
+            padding: 15px 0;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .faq-question p {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .faq-toggle {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .faq-answer {
+            display: none;
+            margin-top: 10px;
+            padding-left: 15px;
+        }
+
+        .brand-tech-container {
+            display: flex;
+            align-items: baseline;
+        }
+
+        .product-brand {
+            font-weight: bold;
+            font-size: 18px;
+            color: #23548a;
+            margin-right: 20px;
+        }
+
+        .tech {
+            font-size: 16px;
+            color: #888;
+        }
+
+        .product-brand {
+            border: 1px solid rgb(75, 200, 250);
+            font-size: 12px;
+            padding: 7px;
+            border-radius: 2px;
+            color: rgb(43, 184, 240);
+        }
+
+        .tech {
+            font-size: 12px;
+            border: 1px solid rgb(75, 200, 250);
+            padding: 7px;
+            border-radius: 2px;
+        }
+
+        @media (max-width: 600px) {
+            .faq-question p {
+                font-size: 16px;
+            }
+            .product-grid {
+                flex-direction: column;
+            }
+        }
+       
+        .sub_title {
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limit to 3 lines */
+    -webkit-box-orient: vertical;
+}
+    .title{
+        font-size: 19px;
+        font-weight: 600;
+    }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Water Purifiers</h1>
+        <h2>202 Options of Water Purifiers Available</h2>
+        <div class="product-grid">
+            {% for p in product %}
+            <div class="product-card">
+                <a href="{% url 'Product_Detail' Pd_id=p.Product_id %}">
+                {% if p.img1 %}
+                <img src="{{ p.img1.url }}" alt="Hot & Ambient Water Purifier">
+                {% endif %}
+                </a>
+                <h3 class="title">{{ p.title }}</h3>
+                <div class="brand-tech-container">
+                    <p class="product-brand" style="color: rgb(3, 152, 211);">{{ p.brand }}</p>
+                    <p class="tech" style="color: rgb(3, 152, 211);">{{ p.technology }}</p>
+                </div>
+                <p>{{ p.price }} <span>MRP ₹{{ p.mrp }}</span></p>
+                <p class="sub_title">{{ p.sub_title }}</p>
+                <div class="button-container">
+                    <form method="POST" action="/Add_Cart/">
+                        {% csrf_token %}
+                    <button class="button1"  name="product_id" id="addToCartBtn" value="{{p.Product_id}}">Add to Cart</button>
+                    <!-- <button class="button1">Add to Cart</button>--></form> 
+                    <a href="{% url 'Product_Detail' Pd_id=p.Product_id %}">
+                        <button class="button1">Learn More</button>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+
+    <!-- Water Purifiers FAQs -->
+    <div class="faq-container">
+        <h2>Water Purifiers FAQs</h2>
+        <div class="faq-item">
+            <div class="faq-question">
+                <p>Why is it essential to have a water purifier?</p>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Having a water purifier is essential for removing contaminants from your drinking water, ensuring it is safe and healthy to consume.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <p>How does Aquaguard purify water?</p>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Aquaguard uses advanced technologies such as RO, UV, and UF to purify water, removing impurities, bacteria, and viruses.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <p>Does a water purifier remove minerals?</p>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Some water purifiers remove harmful minerals and contaminants, while others retain essential minerals in the purified water.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <p>Which type of water purifier is best for home?</p>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>The best type of water purifier for your home depends on your water source and its quality. Common options include RO, UV, and UF purifiers.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <p>Which purifier is good for your health?</p>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Purifiers that remove harmful contaminants while retaining essential minerals are good for your health. Options like RO+UV+UF purifiers are popular.</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.nextElementSibling;
+                const toggle = item.querySelector('.faq-toggle');
+
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                    toggle.textContent = '+';
+                } else {
+                    answer.style.display = 'block';
+                    toggle.textContent = '-';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+{% include 'footer.html' %}

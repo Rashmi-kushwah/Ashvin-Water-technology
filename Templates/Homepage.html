@@ -1,0 +1,1447 @@
+
+{% include 'header.html' %}
+{% include 'Slider.html' %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="
+        https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        
+    </head>
+    <style>
+  
+.category-container {
+
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  /* padding: 20px; */
+
+ 
+}
+
+.category-container a {
+  text-decoration: none;
+  color: black;
+ 
+}
+
+.category-item {
+  text-align: center;
+  margin: 0px 20px 10px 5px;
+}
+.category-item h3 {
+  font-size: 30px;
+}
+
+.category-item img {
+  width: 100px;
+  height: 90px;
+  object-fit: cover;
+}
+
+.more {
+ 
+}
+
+
+/* .category-item p {
+  margin: 5px;
+  border: 1px solid red;
+} */
+@media only screen and (max-width: 768px) {
+  .category-container {
+    
+    display: flex;
+    /* overflow-x: scroll; */
+
+    padding: 20px;
+    border-bottom: 1px solid #ccc; 
+
+    background-color: #fff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); 
+    width: 100%;
+    
+}
+.category-item h3 {
+  font-size: 20px;
+}
+.category-item {
+    margin-right: 1px; 
+}
+.category-item img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+/* .category-container {
+        overflow-x: auto; 
+        justify-content: flex-start; 
+    } */
+
+    .category-item {
+        /* margin-right: 10px;  */
+    }
+
+    .category-item img {
+        width: 62px; 
+        height: 62px;
+    }
+.more{
+  font-size: 9px;
+ 
+}
+
+.category-item p {
+  /* margin: 3px; */
+}
+  .category-item  {
+    font-size: 7px;
+  }
+}
+/* ********************************************** */
+
+.image-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%; 
+}
+.image-container a{
+  color: black;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto; 
+  display: block; 
+}
+
+.image-overlay {
+  position: absolute;
+  top: 50%;
+  left: 0; 
+  transform: translateY(-50%);
+  text-align: left; 
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box; 
+  color: black;
+}
+
+.image-overlay h3 {
+  font-size: 4em;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-family: sans-serif;
+}
+
+.image-overlay p {
+  font-size: 2em;
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-family: sans-serif;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 40px;
+  background-color: #ffffff;
+  color: #000000;
+  text-decoration: none;
+  border: 1px solid black;
+  transition: background-color 0.3s ease;
+  border-radius: 45px;
+  margin-left: 100px;
+}
+
+.button:hover {
+  background-color: rgb(63, 61, 61);
+  color: white;
+}
+@media only screen and (max-width: 768px) {
+.image-container{
+
+}
+.image-overlay h3{
+  font-size: 14px;
+
+}
+.image-overlay p {
+  font-size: 8px;
+}
+.button {
+  width: fit-content;
+  height: auto;
+  font-size: 10px;
+}
+ 
+}
+
+/* ********************************** */
+.image-container1 {
+  margin-top: 10px;
+  position: relative;
+  width: 100%;
+  max-width: 100%; 
+}
+.image-container1 a{
+  color: black;
+}
+
+.image-container1 img {
+  width: 100%;
+  height: auto; 
+  display: block; 
+}
+
+.image-overlay1 {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  text-align: left; 
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  color: white;
+}
+
+.image-overlay1 h3 {
+  font-size: 3em;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-family: sans-serif;
+  color: rgb(85, 84, 84);
+}
+
+.image-overlay1 p {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  font-weight: 400;
+  font-family: sans-serif;
+  color: grey;
+}
+
+.button1 {
+  display: inline-block;
+  padding: 10px 40px;
+  background-color: #ffffff; 
+  color: #000000; 
+  text-decoration: none;
+  border: 1px solid black;
+  transition: background-color 0.3s ease;
+  border-radius: 45px;
+margin-left: 100px;
+
+}
+
+.button1:hover {
+  background-color: rgb(63, 61, 61);
+  color: white;
+}
+
+@media only screen and (max-width: 768px) {
+
+.image-overlay1 h3{
+  font-size: 14px;
+
+}
+.image-overlay1 p {
+  font-size: 8px;
+}
+.button1 {
+  width: fit-content;
+  height: auto;
+  font-size: 10px;
+}
+ 
+}
+
+/* ********************************** */
+.image-container2 {
+  margin-top: 10px;
+  position: relative;
+  width: 100%;
+}
+
+.image-container2 img {
+  width: 100%;
+  height: auto; 
+  display: block;
+}
+
+.image-overlay2 {
+  position: absolute;
+  top: 50%;
+  right: 0; 
+  transform: translateY(-50%);
+  text-align: right; 
+  padding: 20px;
+  width: 50%;
+  box-sizing: border-box;
+  color: white;
+}
+
+.image-overlay2 h3 {
+  font-size: 3em;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-family: sans-serif;
+  color: #fff;
+}
+
+.image-overlay2 p {
+  font-size: 1.1em;
+  margin-bottom: 20px;
+  font-weight: 400;
+  font-family: sans-serif;
+  color: #fff;
+}
+
+.button2 {
+  display: inline-block;
+  padding: 10px 40px;
+  background-color: #ffffff;
+  color: #000000;
+  text-decoration: none;
+  border: 1px solid black;
+  transition: background-color 0.3s ease;
+  border-radius: 45px;
+  /* margin-right: 20px; */
+}
+
+.button2:hover {
+  background-color: rgb(63, 61, 61);
+  color: white;
+}
+
+
+@media only screen and (max-width: 768px) {
+.image-container2{
+
+}
+.image-overlay2 h3{
+  font-size: 14px;
+
+}
+.image-overlay2 p {
+  font-size: 8px;
+}
+.button2 {
+  padding: 5px 30px;
+  display: block;
+  margin-bottom: 45px;
+
+}
+
+ 
+}
+
+
+/* **************************************** */
+
+.image-container3 {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.image-wrapper3 {
+  position: relative;
+  width: calc(50% - 10px); 
+  margin-bottom: 20px; 
+
+}
+
+.image-wrapper3 img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.text-container3 {
+  background-color: rgba(0, 0, 0, 0.5); 
+  padding: 20px;
+  color: white;
+}
+
+.text-container3 h3 {
+  font-size: 2em;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-family: sans-serif;
+}
+
+.text-container3 p {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  font-weight: 400;
+  font-family: sans-serif;
+}
+
+.button3 {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ffffff; 
+  color: #000000; 
+  text-decoration: none;
+  border: 1px solid black;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.button3:hover {
+  background-color: rgb(63, 61, 61);
+  color: white;
+}
+@media only screen and (max-width: 768px) {
+  /* .image-container3 {
+
+}
+
+.text-container3 h3 {
+  font-size: 14px;
+
+}
+.text-container3 p {
+  font-size: 8px;
+}
+.button3 {
+
+} */
+
+ 
+}
+
+/* ********************************************* */
+.image-container3 {
+  margin-top: 10px;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; 
+  width: 100%;
+}
+
+.image-wrapper3 {
+  /* position: relative; */
+  width: calc(50% - 10px); 
+  margin-bottom: 20px; 
+}
+
+.image-wrapper3 img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.image-overlay3 {
+   /* position: absolute; */
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #dee7e9;
+  /* background-color: rgb(236, 242, 245); */
+  color: rgb(59, 57, 57);
+}
+
+.image-overlay3 h3 {
+  font-size: 2em;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-family: sans-serif;
+}
+
+.image-overlay3 p {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+ 
+  font-family: Arial, sans-serif;
+}
+
+.button3 {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ffffff; 
+  color: #000000; 
+  text-decoration: none;
+  border: 1px solid rgb(107, 101, 101);
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  border-radius: 50px;
+}
+
+.button3:hover {
+  background-color: rgb(63, 61, 61); 
+  color: white;
+}
+@media only screen and (max-width: 768px) {
+  .image-container3 {
+
+}
+
+.image-overlay3 h3 {
+  font-size: 27px;
+
+}
+.image-overlay3 p {
+  font-size: 10px;
+}
+.button3 {
+width: fit-content;
+height: auto;
+font-size: 10px;
+}
+
+ 
+}
+
+/* ********************************** */
+
+.image-container4 {
+  margin-top: 10px;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+.image-container4 a{
+  color: black;
+}
+
+.image-container4 img {
+  width: 100%;
+  height: auto; 
+  display: block; 
+/* height: 450px; */
+}
+@media only screen and (max-width: 768px) {
+  .image-container4 {
+
+}
+.image-container4 img {
+  object-fit: contain;
+}
+
+
+
+
+
+ 
+}
+
+
+
+/* ********************************************** */
+
+.image-container5 {
+ margin-top: 10px;
+  position: relative;
+  width: 100%;
+
+}
+.image-container5 a{
+  color: black;
+}
+
+.image-container5 img {
+  width: 100%;
+  height: auto; 
+  display: block; 
+}
+
+.image-overlay5 {
+  position: absolute;
+  top: 50%;
+  left: 0; 
+  transform: translateY(-50%);
+  text-align: left; 
+  /* padding: 20px; */
+  width: 100%;
+  box-sizing: border-box; 
+  color: white;
+}
+
+.image-overlay5 h3{
+  font-size: 40px;
+  margin-bottom: 10px;
+  font-weight: 700;
+  width: 700px;
+  font-family: Arial sans-serif;
+  
+}
+
+.image-overlay5 p {
+  font-size: 2em;
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-family: sans-serif;
+}
+
+.image-container5 .button5 {
+  display: inline-block;
+  padding: 10px 40px;
+  background-color: rgb(68, 67, 67); /* Button background color */
+  color: white;
+  text-decoration: none;
+  border: 1px solid white;
+  transition: background-color 0.3s ease;
+  border-radius: 45px;
+  margin-left: 100px;
+}
+
+.button5:hover {
+  background-color: rgb(63, 61, 61);
+  color: white;
+}
+
+@media only screen and (max-width: 768px) {
+  .image-container5 {
+    width: 100%;
+}
+
+.image-overlay5 h3{
+  font-size: 20px;
+
+}
+.image-overlay5 p {
+  font-size: 10px;
+}
+.button3 {
+  padding: 0 10px;
+/* width: fit-content; */
+height: auto;
+font-size: 10px;
+}
+.button5 {
+  padding: 0 10px;
+/* width: fit-content; */
+height: auto;
+font-size: 10px;
+
+}
+}
+
+/* **************************** */
+
+.container_box{
+  margin-top: 20px;
+ /* background-color: #dee7e9; */
+  background-color: #ebf2f3; 
+}
+.category-container1 {
+  margin-top: 10px;
+ 
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  /* padding: 20px; */
+  width: 100%;
+}
+
+.category-container1 a {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+}
+
+.category-item1 {
+  text-align: center;
+  margin: 0px 40px 20px 5px;
+  
+}
+.category-item1 h3{
+  font-size: 35px;
+}
+
+.category-item1 img{
+  width: 70px;
+  height: 60px;
+  font-size: 40px;
+  object-fit: contain;
+}
+
+
+
+.category-container1 a {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+}
+
+.category-item1_c {
+  text-align: center;
+  margin: 0px 40px 20px 5px;
+  
+}
+.category-item1_c h3{
+  font-size: 35px;
+}
+
+.category-item1_c img{
+  width: 70px;
+  height: 60px;
+  font-size: 40px;
+  object-fit: contain;
+}
+
+
+
+.more1_c {
+  /* Style your .more class as needed */
+}
+@media only screen and (max-width: 768px) {
+.image-container1{
+
+}
+.category-item1 h3{
+  font-size: 14px;
+}
+}
+
+@media only screen and (max-width: 768px) {
+  .image-container5 {
+
+}
+
+.image-overlay5 h3{
+  font-size: 20px;
+
+}
+.image-overlay5 p {
+  font-size: 10px;
+}
+.button3 {
+  padding: 0 10px;
+/* width: fit-content; */
+height: auto;
+font-size: 10px;
+}
+.category-item1_c {
+    display: none;
+  }
+  .more1 {
+    font-size: 13px;
+  }
+}
+
+/* ****************************** */
+.container6 {
+  margin-top: 20px;
+    display: flex;
+    width: 100%;
+    
+}
+
+.image-box6 {
+    position: relative;
+    width: 50%;
+    margin-left: 10px;
+    
+}
+.image-box6 h3{
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.image-box6 img {
+    width: 100%;
+    height: 500px;
+    display: block;
+}
+
+.text-content6 {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: white; /* You can change the color as needed */
+}
+
+.angle-icon6 {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 18px; /* Adjust the size as needed */
+}
+@media only screen and (max-width: 768px) {
+ 
+  .text-content6 h3{
+  font-size: 20px;
+
+}
+.text-content6 p {
+  font-size: 10px;
+}
+
+.category-item1_c {
+    display: none;
+  }
+}
+
+
+/* ******************************* */
+.image-container7 {
+  margin-top: 10px;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; 
+  width: 100%;
+}
+
+.image-wrapper7 {
+  /* position: relative; */
+  width: calc(50% - 10px); 
+  margin-bottom: 20px; /* Spacing between images */
+}
+
+.image-wrapper7 img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.image-overlay7 {
+   /* position: absolute; */
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #dee7e9;
+  /* background-color: rgb(236, 242, 245); */
+  color: rgb(59, 57, 57);
+}
+
+.image-overlay7 h3 {
+  font-size: 2em;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-family: sans-serif;
+}
+
+.image-overlay7 p {
+  font-size: 1em;
+  margin-bottom: 10px;
+ 
+  font-family: Arial, sans-serif;
+}
+
+.button7 {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ffffff; /* Button background color */
+  color: #000000; /* Button text color */
+  text-decoration: none;
+  border: 1px solid rgb(107, 101, 101);
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  border-radius: 50px;
+}
+
+.button7:hover {
+  background-color: rgb(63, 61, 61); /* Darker background on hover */
+  color: white;
+}
+.angle-icon7 {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 18px; /* Adjust the size as needed */
+}
+
+
+@media only screen and (max-width: 768px) {
+
+.image-overlay7 h3 {
+  font-size: 25px;
+
+}
+.image-overlay7 p {
+  font-size: 10px;
+}
+
+
+}
+
+/* **************************** */
+
+.container_box8{
+  margin-top: 10px;
+ /* background-color: #dee7e9; */
+  background-color: #fff; 
+}
+.category-item8_t{
+  text-align: left;
+}
+.category-container8 {
+  margin-top: 10px;
+ 
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  /* padding: 20px; */
+  width: 100%;
+}
+.category-container8 a {
+  text-decoration: none;
+  color: black;
+}
+.category-item8 {
+  text-align: center;
+  margin: 0px 10px 5px 5px; 
+}
+.category-item8 img{
+  width: 180px;
+  height: 200px;
+ 
+  object-fit: contain;
+}
+
+.more8 {
+  font-weight: bold;
+  color: rgb(109, 107, 107);
+}
+.more8:hover {
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 768px) {
+  
+  .container_box8{
+    width: 100%;
+   
+  }
+  .category-item8 img{
+    width: 100px;
+    height: 100px;
+  }
+  .more8{
+    font-size:10px ;
+  } 
+}
+
+
+
+
+
+
+/* *************************** */
+
+
+.container_box9{
+  margin-top: 10px;
+ /* background-color: #dee7e9; */
+  background-color: #ebf2f3; 
+}
+
+.category-container9 {
+  margin-top: 10px;
+ 
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  /* padding: 20px; */
+  width: 100%;
+}
+
+.category-container9 a {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+}
+
+.category-item9 {
+  text-align: center;
+  margin: 0px 30px 20px 5px;
+  
+}
+.category-item9 h3{
+  font-size: 35px;
+}
+
+.category-item9 img{
+  width: 70px;
+  height: 60px;
+  font-size: 40px;
+  object-fit: contain;
+}
+
+.more9 {
+  /* Style your .more class as needed */
+}
+
+.category-item9_c {
+  text-align: center;
+  margin: 0px 30px 20px 5px;
+  
+}
+.category-item9_c h3{
+  font-size: 35px;
+}
+
+.category-item9_c img{
+  width: 70px;
+  height: 60px;
+  font-size: 40px;
+  object-fit: contain;
+}
+
+.more9_c {
+  /* Style your .more class as needed */
+}
+@media only screen and (max-width: 768px) {
+  .container_box8{
+
+}
+
+.image-overlay7 h3 {
+  font-size: 25px;
+
+}
+.image-overlay7 p {
+  font-size: 10px;
+}
+.category-item9_c {
+  display: none;
+}
+.more9 {
+  font-size: 13px;
+}
+
+
+}
+
+
+
+
+
+/* 
+ */
+ 
+.container_box10{
+  margin-top: 10px;
+ /* background-color: #dee7e9; */
+  background-color: #fff; 
+}
+.category-container10 {
+  margin-top: 10px;
+  background-color: #fff; 
+ 
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  /* padding: 20px; */
+  width: 100%;
+}
+
+.category-container10 a {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+}
+.category-container10 a h2{
+  font-size: 60px;
+  font-weight: 700;
+}
+.category-container10 a p{
+  font-size: 18px;
+ 
+}
+
+.category-item10 {
+  text-align: center;
+  margin: 0px 80px 20px 5px;
+  
+}
+.category-item10 h3{
+  font-size: 35px;
+}
+
+.category-item10 img{
+  width: 70px;
+  height: 60px;
+  font-size: 40px;
+  object-fit: contain;
+}
+
+
+
+.button10 {
+  display: inline-block;
+  padding: 8px 20px;
+  /* background-color: #ffffff;  */
+  color: #fff;
+  text-decoration: none;
+ 
+  border-radius: 45px;
+  transition: background-color 0.3s ease;
+  background-color: rgb(39, 39, 129);
+}
+/* .button10:hover {
+  background-color: blue;
+} */
+
+@media only screen and (max-width: 768px) {
+
+
+.category-container10 a h2{
+  font-size: 25px;
+
+}
+.category-container10 a p{
+  font-size: 10px;
+}
+
+
+}
+
+
+/* *************************** */
+
+.image-container11 {
+  margin-top: 10px;
+  position: relative;
+  width: 100%;
+  max-width: 100%; 
+/* border: 1px solid red; */
+}
+.image-container11 a{
+  color: black;
+}
+
+.image-container11 img {
+  width: 100%;
+  height: auto; 
+  display: block;
+/* height: 400px; */
+}
+
+.image-overlay11 {
+  position: absolute;
+  top: 50%;
+  left: 0; 
+  transform: translateY(-50%);
+  text-align: left; 
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box; 
+  color: black;
+}
+
+.image-overlay11 h3 {
+  font-size: 30px;
+  margin-bottom: 10px;
+  font-weight: 700;
+  font-family: Arial, sans-serif sans-serif;
+}
+.image-container11 h5{
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.image-overlay11 p {
+  font-size: 17px;
+  color: rgb(71, 69, 69);
+  /* font-size: 1em; */
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-family: sans-serif;
+}
+
+
+@media only screen and (max-width: 768px) {
+  .image-overlay11 h3 {
+    font-size: 15px;
+    margin-top: 30px;
+
+  }
+  .image-overlay11 p {
+    font-size: 9px;
+  }
+  .image-container11 h5{
+    font-size: 15px;
+  }
+}
+   </style>
+    <body>
+    
+
+
+
+
+
+
+
+         
+<!----------Category---------->   
+<div class="category-container">
+  <a href="" style="text-decoration: none;">
+      <div class="category-item">
+         <h3>What Would Yoy like to do?</h3>
+        
+              <span class="more_lan"></span>
+          </div>
+        
+      </div>
+  </a>          
+
+        </div>
+        {% for page in pages %}
+        <a href="" style="text-decoration: none;">
+          <div class="image-container">
+            {% if page.bg_img1 %}
+            <img src="{{ page.bg_img1.url }}" alt="Description of the image">
+            {% endif %}
+            <div class="image-overlay">
+              <h3 style="color: rgb(66, 66, 66);">{{ page.title1_h3 }}</h3>
+              <p>{{ page.title1_p }}</p>
+              <a href="/water-purifiers/" class="button">Book Now</a>
+            </div>
+          </div>
+          
+        </a>
+        
+
+        <div class="image-container1">
+          {% if page.bg_img2 %}
+          <img src="{{ page.bg_img2.url }}" alt="Description of the image">
+          {% endif %}
+          <div class="image-overlay1">
+            <h3>{{ page.title2_h3 }}</h3>
+              <p>{{ page.title2_p }}</p>
+            <a href="#" class="button1">Book Now</a>
+          </div>
+        </div>
+     
+
+
+        <div class="image-container2">
+          {% if page.bg_img3 %}
+          <img src="{{ page.bg_img3.url }}" alt="Description of the image">
+          {% endif %}
+          <div class="image-overlay2">
+            <h3>{{ page.title3_h3 }}</h3>
+      
+              <p>{{ page.title3_p }}</p>
+            <a href="/water-purifiers/" class="button2">Book Now</a>
+          </div>
+        </div>
+        
+
+
+        <div class="image-container3">
+          <div class="image-wrapper3">
+            {% if page.bg_img4 %}
+          <img src="{{ page.bg_img4.url }}" alt="Description of the image">
+          {% endif %}
+            <div class="image-overlay3">
+              
+              <h3>{{ page.title4_h3 }}</h3>
+      
+              <p>{{ page.title4_p }}</p>
+              <a href="#" class="button3">Learn More</a>
+            </div>
+          </div>
+          
+          <div class="image-wrapper3">
+            {% if page.bg_img5 %}
+            <img src="{{ page.bg_img5.url }}" alt="Description of the image">
+            {% endif %}
+            <div class="image-overlay3">
+              <h3>{{ page.title5_h3 }}</h3>
+      
+              <p>{{ page.title5_p }}</p>
+              <a href="#" class="button3">Learn More</a>
+            </div>
+          </div>
+        </div>
+
+
+
+        
+
+        <div class="image-container5">
+          {% if page.bg_img7 %}
+          <img src="{{ page.bg_img7.url }}" alt="Description of the image">
+          {% endif %}
+          <div class="image-overlay5">
+            <!-- <h3>Get the personalized product presentation</h3> -->
+          
+            <a href="#" class="button5">Book Now</a> 
+          </div>
+        </div>
+
+
+   
+
+      
+    
+
+    <div class="container6">
+      <div class="image-box6">
+          <img src="{{ page.bg_img8.url }}" alt="Image 1">
+          <div class="text-content6">
+            <h3>{{ page.title8_h3 }}</h3>
+      
+            <p>{{ page.title8_p }}</p>
+              <p class="angle-icon">Advantages&#x27A4;</p>
+          </div>
+      </div>
+      <div class="image-box6">
+          <img src="{{ page.bg_img9.url }}" alt="Image 2">
+          <div class="text-content6">
+            <h3>{{ page.title9_h3 }}</h3>
+      
+            <p>{{ page.title9_p }}</p>
+              <p class="angle-icon6">Shop &#x27A4;</p>
+          </div>
+      </div>
+  </div>
+
+
+
+
+
+  <div class="image-container7">
+    <div class="image-wrapper7">
+      <img src="{{ page.bg_img10.url }}" alt="Description of the first image">
+      <div class="image-overlay7">
+        <h3>{{ page.title10_h3 }}</h3>
+      
+        <p>{{ page.title10_p }}</p>
+        <p class="angle-icon7">Know More &#x27A4;</p>
+        
+      </div>
+    </div>
+    
+    <div class="image-wrapper7">
+      <img src="{{ page.bg_img11.url }}" alt="Description of the second image">
+      <div class="image-overlay7">
+        <h3>{{ page.title11_h3 }}</h3>
+      
+        <p>{{ page.title11_p }}</p>
+        <p class="angle-icon7">Know More &#x27A4;</p>
+      </div>
+    </div>
+  </div>
+
+
+  {% endfor %}
+<!----------Category---------->   
+<div class="container_box8">
+  <div class="category-header">
+    <h3 style="text-align: center;">Trending Products</h3>
+  </div>
+  <div class="category-container8">
+    {% for p in product %}
+    <div class="category-item8">
+      <a href="{% url 'Product_Detail' Pd_id=p.Product_id %}">
+        {% if p.img1 %}
+        <img src="{{ p.img1.url }}" alt="Product Image">
+        {% else %}
+        <img src="https://via.placeholder.com/180x200" alt="Placeholder Image">
+        {% endif %}
+      </a>
+      <div class="more8">Aquaguard Slimtech Glass UV Storage
+        <span class="more_lan8"></span>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!--
+
+<div class="container_box">
+<div class="category-container9">
+  <a href="" style="text-decoration: none;">
+      <div class="category-item9">
+        <h3>{{ page.title10_h3 }}</h3>
+      
+        <p>{{ page.title10_p }}</p>
+        
+              <span class="more_lan9"></span>
+          </div>
+       
+      </div>
+  </a>            
+
+
+<div class="category-container9">
+  <a href="" style="text-decoration: none;">
+    <div class="category-item9">
+      <img src="c:\Users\rashm\Downloads\screenshot-www.eurekaforbes.com-2024.06.20-18_21_09.png">
+    
+      <div class="more9">Free Standard installation 
+              <span class="more_lan9"></span>
+          </div>
+        
+      </div>
+  </a>
+  <a href="" style="text-decoration: none;">
+    <div class="category-item9">
+      <img src="c:\Users\rashm\Downloads\screenshot-www.eurekaforbes.com-2024.06.20-18_22_49.png">
+ 
+      <div class="more9">online order tracking
+            <span class="more_lan9"></span>
+        </div>
+     
+    </div>
+  <a href="" style="text-decoration: none;">
+    <div class="category-item9">
+      <img src="c:\Users\rashm\Downloads\screenshot-www.eurekaforbes.com-2024.06.20-18_22_59.png">
+     
+      <div class="more9">20+ Milllian happy Customers
+            <span class="more_lan9"></span>
+        </div>
+      
+    </div>
+    <a href="" style="text-decoration: none;">
+      <div class="category-item9_c">
+        <img src="c:\Users\rashm\Downloads\screenshot-www.eurekaforbes.com-2024.06.20-18_24_57.png">
+        
+        <div class="more9_c">Secure Payments
+              <span class="more_lan9_c"></span>
+          </div>
+      
+      </div>
+    </div>
+
+
+ 
+<div class="container_box10">
+    <div class="category-container10">
+      <div class="category-item10">
+        <h3>{{ page.title11_h3 }}</h3>
+      
+        <p>{{ page.title11_p }}</p>
+        <div class="more10">
+          <a href="#" class="button10" style="color: #fff;">Book Now &#x27A4;</a>
+          
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+
+  
+              </body>
+           
+    </body>
+</html>
+{% include 'footer.html' %}

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aquaguard Service</title>
+  <style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.main-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+
+    
+}
+
+.amc-banner {
+    text-align: center;
+            background: #f4f4f4;
+            color: #333;
+            padding: 50px 20px;
+}
+
+.amc-banner h1 {
+    font-size: 3.5em;
+    margin-bottom: 10px;
+}
+
+.amc-banner p {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    color: gray;
+    font-weight: bold;
+}
+
+.amc-login {
+    background: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    display: inline-block;
+    text-align: left;
+    border: 1px solid rgb(43, 41, 41);
+    flex-direction: column;
+    align-items: center; 
+    text-align: center; 
+       
+
+}
+
+.amc-login p {
+    margin-bottom: 15px;
+    font-size: 1em;
+}
+
+.amc-login input {
+    width: 80%;
+    padding: 20px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.amc-login button {
+    text-align: center;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 50px;
+    background-color: rgb(8, 8, 109);
+    color: #fff;
+    cursor: pointer;
+}
+
+.service-banner {
+    text-align: center;
+    background: #0077cc;
+    color: #fff;
+    padding: 50px 20px;
+    margin-top: 20px;
+}
+
+.service-banner h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.service-banner p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.service-banner button {
+    padding: 15px 25px;
+    background-color: #ffd700;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.features {
+    background-color: rgb(3, 3, 134);
+    padding: 50px 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.features h2 {
+    font-size: 2em;
+    margin-bottom: 30px;
+}
+
+.feature-list {
+    display: flex;
+    justify-content: center;
+
+    flex-wrap: wrap;
+}
+
+.feature-item {
+    /* background: #e9f5ff; */
+    padding: 20px;
+    border-radius: 5px;
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+}
+
+.feature-item img {
+    max-width: 50px;
+    margin-bottom: 10px;
+}
+
+.feature-item p {
+    font-size: 1em;
+    margin: 0;
+    color: #fff;
+}
+
+.genuine-service-banner {
+    background-color: #fff;
+    padding: 50px 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.genuine-service-banner h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.genuine-service-banner p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.genuine-service-banner ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    display: inline-block;
+    text-align: left;
+}
+
+.genuine-service-banner ul li {
+    font-size: 1em;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.genuine-service-banner ul li:before {
+    content: '✔';
+    position: absolute;
+    left: 0;
+    color: #00aaff;
+}
+
+@media (max-width: 768px) {
+    .feature-list {
+        flex-direction: column;
+    }
+}
+
+
+/* ********************************************** */
+
+.image-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%; 
+}
+.image-container a{
+  color: black;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto; 
+  display: block; 
+}
+
+.image-overlay {
+  position: absolute;
+  top: 50%;
+  left: 0; 
+  transform: translateY(-50%);
+  text-align: left; 
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box; 
+  color: black;
+}
+
+.image-overlay h3 {
+  font-size: 4em;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-family: sans-serif;
+}
+
+.image-overlay p {
+  font-size: 2em;
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-family: sans-serif;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 40px;
+  background-color: #ffffff;
+  color: #000000;
+  text-decoration: none;
+  border: 1px solid black;
+  transition: background-color 0.3s ease;
+  border-radius: 45px;
+  margin-left: 100px;
+}
+
+.button:hover {
+  background-color: rgb(63, 61, 61);
+  color: white;
+}
+@media only screen and (max-width: 768px) {
+.image-container{
+
+}
+.image-overlay h3{
+  font-size: 14px;
+
+}
+.image-overlay p {
+  font-size: 8px;
+}
+.button {
+  width: fit-content;
+  height: auto;
+  font-size: 10px;
+}
+ 
+}
+
+  </style>
+</head>
+<body>
+ 
+        <div class="amc-banner">
+            <h1>Annual Maintenance Contract</h1>
+            <p>Get an Aquaguard Genuine AMC that covers repairs & replacement of worn out parts.</p>
+            <div class="amc-login">
+                <p  style="color: rgb(7, 7, 109); font-size: 1.2em;">Login to buy Aquaguard Genuine AMC plans. Starting at Rs.599 per year.</p>
+                
+                <input type="text" placeholder="Enter Registered Mobile Number">
+                <button>Login to Buy</button>
+            </div>
+        </div>
+        
+        <a href="" style="text-decoration: none;">
+            <div class="image-container">
+         
+              <img src="https://www.eurekaforbes.com/media/wysiwyg/hero-banners/Genuine-Service-Banner-d.jpg" alt="Description of the image">
+              
+              <div class="image-overlay">
+                <h3 style="color: rgb(66, 66, 66);">Aquaguard Genuine Service</h3>
+                <p>Plans Starting at ₹599/- per year</p>
+                <a href="/water-purifiers/" class="button">Book Now</a>
+              </div>
+            </div>
+            
+          </a>
+        
+        <div class="features">
+            <h2 style="color: #fff;">What you get*</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <img src="https://www.eurekaforbes.com/media/wysiwyg/amc/service-2.svg" alt="Service">
+                    <p>Up to 4 services in a year</p>
+                </div>
+                <div class="feature-item">
+                    <img src="https://www.eurekaforbes.com/media/wysiwyg/amc/replacement.svg" alt="Filter">
+                    <p>Replacement of filters as per plan</p>
+                </div>
+                <div class="feature-item">
+                    <img src="https://www.eurekaforbes.com/media/wysiwyg/amc/repair.svg" alt="Breakdown">
+                    <p>Unlimited breakdown visits. Replacement of parts as per plans</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="genuine-service-banner">
+            <h2>Aquaguard Genuine Service and Filters</h2>
+            <p>Because Fake Filters can cause real illnesses</p>
+            <ul>
+                <li>Genuine spare parts as per ISO standards</li>
+                <li>Instant service booking via app</li>
+                <li>8500+ certified service technicians</li>
+                <li>Service centre every 5 km across 800+ cities</li>
+                <li>Most trusted brand - 38+ years experience</li>
+                <li>Transferable AMC all over India</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

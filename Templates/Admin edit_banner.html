@@ -1,0 +1,213 @@
+<!-- templates/Admin/edit_banner.html -->
+{% extends 'admin_nav.html' %}
+
+{% block main %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Banner</title>
+    <style>
+        /* body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        } */
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .banner-images {
+            margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-gap: 10px;
+        }
+        .banner-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.2);
+        }
+        .image-upload {
+            margin-top: 10px;
+        }
+        .image-upload, .text-input {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .title_h3 , .title_p input {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+
+     <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+    <div class="container">
+        <h1>Edit Banner</h1>
+
+        <div class="banner-images">
+            <!-- Display existing images from the Page object -->
+
+            {% if page.bg_img1 %}
+            <div>
+                <img src="{{ page.bg_img1.url }}" class="banner-image" alt="Banner Image 1">
+                <input type="file" name="bg_img1" class="image-upload">
+                <input type="text" name="title1_h3" value="{{ page.title1_h3 }}" placeholder="Title H3" class="title_h3">
+                <input type="text" name="title1_p" value="{{ page.title1_p }}" placeholder="Title Paragraph"  class="title_h3">
+            </div>
+        {% endif %}
+            <!-- {% if page.bg_img1 %}
+                <div>
+                    <img src="{{ page.bg_img1.url }}" class="banner-image" alt="Banner Image 1">
+                    <input type="file" name="bg_img1" class="image-upload">
+                    <input type="text" name="title2_h3" value="{{ page.title2_h3 }}" placeholder="Title H3"  class="title_h3">
+                    <input type="text" name="title2_p" value="{{ page.title2_p }}" placeholder="Title Paragraph"  class="title_h3">
+                  
+                </div>
+            {% endif %} -->
+            <!-- Add more image display as needed for bg_img2, bg_img3, etc. -->
+            {% if page.bg_img2 %}
+                <div>
+                    <img src="{{ page.bg_img2.url }}" class="banner-image" alt="Banner Image 2">
+                    <input type="file" name="bg_img2" class="image-upload">
+                    <input type="text" name="title3_h3" value="{{ page.title3_h3 }}" placeholder="Title H3"  class="title_h3">
+                    <input type="text" name="title3_p" value="{{ page.title3_p }}" placeholder="Title Paragraph"  class="title_h3">
+                </div>
+            {% endif %}
+            <!-- Repeat for other images -->
+            {% if page.bg_img3 %}
+            <div>
+                <img src="{{ page.bg_img3.url }}" class="banner-image" alt="Banner Image 2">
+                <input type="file" name="bg_img2" class="image-upload">
+                <input type="text" name="title4_h3" value="{{ page.title4_h3 }}" placeholder="Title H3"  class="title_h3">
+                <input type="text" name="title4_p" value="{{ page.title4_p }}" placeholder="Title Paragraph"  class="title_h3">
+            </div>
+        {% endif %}
+        {% if page.bg_img4 %}
+        <div>
+            <img src="{{ page.bg_img4.url }}" class="banner-image" alt="Banner Image 2">
+            <input type="file" name="bg_img4" class="image-upload">
+            <input type="text" name="title5_h3" value="{{ page.title5_h3 }}" placeholder="Title H3"  class="title_h3">
+            <input type="text" name="title5_p" value="{{ page.title5_p }}" placeholder="Title Paragraph"  class="title_h3">
+        </div>
+    {% endif %}
+    {% if page.bg_img5 %}
+    <div>
+        <img src="{{ page.bg_img5.url }}" class="banner-image" alt="Banner Image 2">
+        <input type="file" name="bg_img5" class="image-upload">
+        <input type="text" name="title6_h3" value="{{ page.title6_h3 }}" placeholder="Title H3"  class="title_h3">
+        <input type="text" name="title6_p" value="{{ page.title6_p }}" placeholder="Title Paragraph"  class="title_h3">
+    </div>
+{% endif %}
+<!-- {% if page.bg_img6 %}
+<div>
+    <img src="{{ page.bg_img6.url }}" class="banner-image" alt="Banner Image 2">
+    <input type="file" name="bg_img6" class="image-upload">
+    <input type="text" name="title7_h3" value="{{ page.title7_h3 }}" placeholder="Title H3"  class="title_h3">
+    <input type="text" name="title7_p" value="{{ page.title7_p }}" placeholder="Title Paragraph"  class="title_h3">
+</div>
+{% endif %} -->
+{% if page.bg_img7 %}
+<div>
+    <img src="{{ page.bg_img7.url }}" class="banner-image" alt="Banner Image 2">
+    <input type="file" name="bg_img7" class="image-upload">
+    <input type="text" name="title8_h3" value="{{ page.title8_h3 }}" placeholder="Title H3"  class="title_h3">
+    <input type="text" name="title8_p" value="{{ page.title8_p }}" placeholder="Title Paragraph"  class="title_h3">
+</div>
+{% endif %} 
+{% if page.bg_img8 %}
+<div>
+    <img src="{{ page.bg_img8.url }}" class="banner-image" alt="Banner Image 2">
+    <input type="file" name="bg_img8" class="image-upload">
+    <input type="text" name="title8_h3" value="{{ page.title8_h3 }}" placeholder="Title H3" class="title_h3">
+    <input type="text" name="title8_p" value="{{ page.title8_p }}" placeholder="Title Paragraph"  class="title_h3">
+</div>
+{% endif %}
+{% if page.bg_img9 %}
+<div>
+    <img src="{{ page.bg_img9.url }}" class="banner-image" alt="Banner Image 2">
+    <input type="file" name="bg_img9" class="image-upload">
+    <input type="text" name="title9_h3" value="{{ page.title9_h3 }}" placeholder="Title H3"  class="title_h3">
+    <input type="text" name="title9_p" value="{{ page.title9_p }}" placeholder="Title Paragraph"  class="title_h3">
+</div>
+{% endif %}
+
+{% if page.bg_img10 %}
+<div>
+    <img src="{{ page.bg_img10.url }}" class="banner-image" alt="Banner Image 2">
+    <input type="file" name="bg_img10" class="image-upload">
+    <input type="text" name="title10_h3" value="{{ page.title10_h3 }}" placeholder="Title H3"  class="title_h3">
+    <input type="text" name="title10_p" value="{{ page.title10_p }}" placeholder="Title Paragraph" class="title_h3">
+</div>
+{% endif %}
+
+{% if page.bg_img11 %}
+<div>
+    <img src="{{ page.bg_img11.url }}" class="banner-image" alt="Banner Image 2">
+    <input type="file" name="bg_img11" class="image-upload">
+    <input type="text" name="title11_h3" value="{{ page.title11_h3 }}" placeholder="Title H3"  class="title_h3">
+    <input type="text" name="title11_p" value="{{ page.title11_p }}" placeholder="Title Paragraph"  class="title_h3">
+</div>
+{% endif %}
+<!--
+{% if page.bg_img12 %}
+<div>
+    <img src="{{ page.bg_img12.url }}" class="banner-image" alt="Banner Image 2">
+    <input type="file" name="bg_img12" class="image-upload">
+    <input type="text" name="title12_h3" value="{{ page.title12_h3 }}" placeholder="Title H3"  class="title_h3">
+    <input type="text" name="title12_p" value="{{ page.title12_p }}" placeholder="Title Paragraph"  class="title_h3">
+</div>
+{% endif %}
+
+ {% if page.bg_img13 %}
+<div>
+    <img src="{{ page.bg_img13.url }}" class="banner-image" alt="Banner Image 2">
+    <input type="file" name="bg_img13" class="image-upload">
+    <input type="text" name="title13_h3" value="{{ page.title13_h3 }}" placeholder="Title H3"  class="title_h3">
+    <input type="text" name="title13_p" value="{{ page.title13_p }}" placeholder="Title Paragraph"  class="title_h3">
+</div>
+{% endif %} -->
+
+
+        </div>
+        
+        <button type="submit">Save Changes</button>
+    </form>
+    </div>
+</body>
+</html>
+{% endblock %}

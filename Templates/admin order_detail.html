@@ -1,0 +1,380 @@
+{% extends 'admin_nav.html' %}
+
+{% block main %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            /* background-color: #f8f9fa; */
+        }
+        .order-card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .order-header {
+            background-color: #333;
+            color: #fff;
+            padding: 7px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .order-body {
+            padding: 20px;
+        }
+        .order-image {
+            max-width: 100px;
+            max-height: 100px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .order-details {
+            /* margin-left: 220px; */
+         
+        }
+        .order-details span {
+            display: block;
+        }
+
+        /*  */
+        .container-fluid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+   
+.product-container {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          margin-bottom: 10px;
+          width: 100%;
+          background-color: #fff;
+          padding: 10px;
+          border-radius: 5px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          margin-top: 10px;
+      }
+.product {
+    flex: 0 0 auto;
+    margin-right: 20px;
+}
+.product-details p{
+  text-align: left;
+}
+.order-icon {
+    font-size: 48px;
+    color: #000;
+}
+.order-icon img{
+  width: 100px;
+  height: 90px;
+  object-fit: contain;
+}
+
+@media screen and (max-width: 768px) {
+    .product-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+.add-to-cart-btn,
+.buy-now-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-right: 10px;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  
+}
+
+.add-to-cart-btn {
+  background-color: #f8140c;
+  border: none;
+}
+
+.buy-now-btn {
+  background-color: #27ae60;
+  border: none;
+  margin-top: 10px;
+}
+
+.add-to-cart-btn:hover,
+.buy-now-btn:hover {
+  background-color: #2980b9;
+}
+ .tracking_link{
+ 
+  background-color: #fb641b;
+
+
+  color: white;
+  font-weight: bold;
+  text-align: center;
+ padding: 3px 20px;
+ width: 150px;
+ font-size: 14px;
+}
+.tracking_link a {
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .product {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product-image {
+    width: 100%;
+    height: auto;
+  }
+
+
+  .add-to-cart-btn,
+  .buy-now-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+    margin-top: 10px;
+  }
+}
+
+    </style>
+    <style>
+  
+      /* * Navigation Section */ 
+      .sec-nav {
+        /* background-color: rgb(252, 162, 52); */
+        text-align: center;
+        padding: 35px;
+      width: 100%;
+      background-color: #154360;
+       /* background-color:#191970;  */
+      /* background-color: rgb(253, 208, 5); */
+              flex-direction: column; /* Stack items vertically */
+              align-items: center; /* Center items horizontally */
+              justify-content: center;
+              height: auto; /* Adjust height or remove fixed height */
+              padding:10px; /* Adjust padding */
+            text-align: center;
+             margin-top: 10px;
+             
+      
+      }
+      
+      
+          p {
+              /* Adjust styles for links in the secondary navigation */
+              margin: 5px 10px; /* Adjust margins */
+              font-size: 18px; /* Modify font size */
+              font-weight: 500;
+              color: white; /* Text color */
+              text-align: center; /* Center align text */
+              padding: 5px; /* Add padding */
+            }  
+       
+      .ord-sup {
+        /* display: inline-block; */
+        margin: 0 20px;
+      
+      }
+      
+      .ord-sup a {
+        text-decoration: none;
+       
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+      
+       
+      
+      }
+      
+      .ord-sup p {
+        margin: 0;
+      }
+      
+      .sup_odr {
+        font-size: 0.8em;
+        background-color: red; 
+      
+        padding: 3px 2px;
+        border-radius: 50%;
+      width: 24px;
+      height:25px;
+      border-radius: 50%;
+      right: -15px; 
+      margin-top: -3px;
+      }
+      .text{
+        font-weight: 400;
+       font-size: 18px;
+        color: white;
+        margin-top: 5px;
+        text-align: center;
+      
+      
+      }
+      .btn{
+       
+    padding: 5px 36px;
+    background: #007bff;
+    border: none;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 10px;
+    margin-top: 5px;
+      }
+      .btn1{
+        margin-left: 10px;
+        margin-top: 10px;
+        padding: 5px 36px;
+        /* padding: 5px; */
+    background: rgb(219, 3, 3);
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+      }
+
+    .Accept_order{
+ 
+      background-color: green;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding: 3px 20px;
+    width: 150px;
+    font-size: 14px;
+      }
+     
+      /* Animation Keyframes */
+      @keyframes slideInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @media only screen and (max-width: 768px) {
+        #profile img {
+          width: 150px; /* Example: Choti image ke liye width kam kiya gaya hai */
+          height: auto; /* Example: Height ko auto set kiya gaya hai */
+        }
+      
+        .user-details {
+          font-size: 14px; /* Example: User details ka font size kam kiya gaya hai */
+        }
+      
+        .sec-nav {
+          padding: 10px; /* Example: Padding ko kam kiya gaya hai */
+        }
+      
+        .ord-sup {
+          margin: 10px; /* Example: Margin ko kam kiya gaya hai */
+        }
+      
+        p {
+          font-size: 14px; /* Example: Links ke font size ko kam kiya gaya hai */
+        }
+      }
+      </Style>
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Order List</h1>
+        {% for order in orders %}
+            <div class="order-card">
+                <div class="order-header">
+                    <h5>Order ID: {{ order.order_id }}</h5>
+                </div>
+              
+                <div class="order-body row">
+                    <div class="col-md-2">
+                        <img src="{{ order.img1.url }}" alt="Product Image" class="order-image">
+                    </div>
+                     
+      <div class="product-details">
+        {% if order.order_status == "New" %}
+        <a href="/admin/panel/Accept_order/?id={{order.order_id}}" style=" text-decoration: none;"><p class="Accept_order">Accept Order</p></a>
+
+        {% endif %}
+        <!-- {{order.order_status}} -->
+        
+        {% if order.order_status == "delivered" %}
+
+        <a href="{{order.tracking_link}}" style=" text-decoration: none;"><p class="tracking_link">tracking Order</p></a>
+        {% elif order.order_status == "Shipped" %}
+        <a href="{{order.tracking_link}}" style=" text-decoration: none;"><p class="tracking_link">tracking Order</p></a>
+
+        {% endif %}
+
+
+        {% if order.order_status == "ready" %}
+        <form action="/admin/panel/admin_Ship_order/">
+          <label for="tracking_link">Tracking Link</label>
+          <input type="text" name="link" id="tracking_link" required>
+          
+          <label for="tracking_id">Tracking ID</label>
+          <input type="text" name="tracking_id" id="tracking_id" required>
+          <input value="{{order.order_id}}" name="idd" style="display: none;">
+          <button type="submit" class="btn">Shipper Order</button>
+      </form>
+        {% endif %}
+
+        {% if order.order_status == "shipped" %}
+              <form action="/admin/panel/admin_deliver_order/" method="get">
+              <input type="hidden" name="deliver" value="{{ order.order_id }}">
+              <button type="submit" class="btn">Deliver Order</button>
+            </form>
+         
+          {% endif %}
+          
+      {% if order.order_status != "canceled" %}
+    
+
+          <form action="/admin/panel/admin_Cancel_order/" method="get">
+              <input type="hidden" name="cancel" value="{{ order.order_id }}">
+              <button type="submit" class="btn1">Cancel Order</button>
+          </form>
+
+      {% endif %}
+                    <div class="col-md-10 order-details">
+                        <!-- <span><strong>Product ID:</strong> {{ order.Product_id }}</span> -->
+                        <span><strong>User UID:</strong> {{ order.user_uid }}</span>
+                        <span><strong>Name:</strong> {{ order.first_name }} {{ order.last_name }}</span>
+                        <span><strong>Address:</strong> {{ order.house_no }}, {{ order.street }}, {{ order.street1 }}, {{ order.street2 }}, {{ order.city }}, {{ order.region }}, {{ order.pin_code }}, {{ order.country }}</span>
+                        <span><strong>Tracking Link:</strong> <a href="{{ order.tracking_link }}" target="_blank">Track Order</a></span>
+                        <span><strong>Order Status:</strong> {{ order.order_status }}</span>
+                        <span><strong>Total Amount:</strong> {{ order.total_amount }}</span>
+                        <span><strong>Price:</strong> {{ order.price }}</span>
+                        <span><strong>Quantity:</strong> {{ order.qty }}</span>
+                    </div>
+                   
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
+{% endblock %}

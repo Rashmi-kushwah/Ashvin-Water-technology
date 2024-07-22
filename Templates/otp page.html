@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OTP Verification</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+    border: 1px solid grey;
+    height: auto;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 10px; /* Add margin to the bottom of input boxes */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 7px;
+    font-size: 15px;
+    padding-left: 20px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.5);
+    outline-style: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add shadow to the input */
+}
+
+input{ width: 90%;
+    height: 40px;
+    margin-bottom: 10px; /* Add margin to the bottom of input boxes */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 7px;
+    font-size: 15px;
+    padding-left: 20px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.5);
+    outline-style: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add shadow to the input */
+    }
+
+    button {
+      margin-top: 10px;
+      width: 90%;
+      padding: 10px 20px;
+      outline: none;
+        border: 0;
+        border-radius: 20px;
+        padding: 7px 15px;
+        background-color: #0033a0;
+        color: #fff;
+        font-size: 22px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-bottom: 40px;
+      cursor: pointer;
+     
+    }
+    button:hover{
+              background-color: #0055cc;
+            
+            }
+           
+           
+#otpStatus {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+        
+    {% if error %}
+    <div class="msg">
+        <h4>{{ error }}</h4>
+    </div>
+    {% endif %}
+    <h2>OTP Verification</h2>
+    <form method="POST" action="" >
+      {% csrf_token %}
+      <input type="text" name="otp" id="otpInput" placeholder="Enter OTP" maxlength="6" required>
+      <button type="submit">Verify</button>
+    </form>
+    <div id="otpStatus"></div>
+  </div>
+</body>
+</html>

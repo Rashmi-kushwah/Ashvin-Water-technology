@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+   <style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.payment-form {
+    max-width: 500px;
+    margin: auto;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+}
+
+   </style>
+</head>
+<body>
+    <div class="container">
+        <section class="payment-form">
+            <h2>Payment Details</h2>
+            <form id="payment-form">
+                <div class="form-group">
+                    <label for="card-number">Card Number</label>
+                    <input type="text" id="card-number" name="card-number" placeholder="Enter your card number" required>
+                </div>
+                <div class="form-group">
+                    <label for="card-expiry">Expiration Date</label>
+                    <input type="text" id="card-expiry" name="card-expiry" placeholder="MM/YY" required>
+                </div>
+                <div class="form-group">
+                    <label for="card-cvv">CVV</label>
+                    <input type="text" id="card-cvv" name="card-cvv" placeholder="CVV" required>
+                </div>
+                <div class="form-group">
+                    <label for="card-name">Cardholder Name</label>
+                    <input type="text" id="card-name" name="card-name" placeholder="Enter cardholder name" required>
+                </div>
+                <button type="submit">Pay Now</button>
+            </form>
+        </section>
+    </div>
+<script>
+    document.getElementById('payment-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    // Basic validation (you should implement more robust validation as per your requirements)
+    let cardNumber = document.getElementById('card-number').value.trim();
+    let cardExpiry = document.getElementById('card-expiry').value.trim();
+    let cardCVV = document.getElementById('card-cvv').value.trim();
+    let cardName = document.getElementById('card-name').value.trim();
+
+    if (cardNumber === '' || cardExpiry === '' || cardCVV === '' || cardName === '') {
+        alert('Please fill in all fields.');
+        return;
+    }
+
+    // Submit form or send data to backend for further processing
+    alert('Payment submitted successfully!');
+});
+
+</script>
+</body>
+</html>

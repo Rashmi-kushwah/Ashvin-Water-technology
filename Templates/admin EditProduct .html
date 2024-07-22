@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Edit Product</title>
+    <style>
+        /* Reset and basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Main container */
+        .registration-form {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            background-color: #fff;
+        }
+
+        /* Form rows and groups */
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            flex: 0 0 48%; /* Change this to adjust the width */
+            margin: 1%;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .form-group label {
+            flex: 1;
+            margin-bottom: 0;
+            font-weight: bold;
+            opacity: 0.7;
+        }
+
+        .form-group .form-control {
+            flex: 2;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+        .btn-custom {
+    background-color: #f0971a;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 40px;
+    border: none;
+    display: block;
+    margin: 0 auto; /* Centers the button horizontally */
+}
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .registration-form {
+                padding: 15px;
+            }
+
+            .form-group {
+                flex: 0 0 100%; /* Full width on smaller screens */
+                margin: 1% 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .form-group {
+                flex: 0 0 100%; /* Full width on even smaller screens */
+                margin: 1% 0;
+            }
+
+            .submit-button {
+                padding: 10px;
+                font-size: 14px;
+            }
+        }
+        .order-icon img{
+            width: 150px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="registration-form">
+        <h2 class="text-center">Edit Product</h2>
+        <div class="form-row">
+       
+        <div class="icon">
+            <div class="order-icon">
+                {% if product.img1 %}
+                    <img src="{{ product.img1.url }}" alt="Product Image">
+                {% endif %}
+            </div>
+        </div>
+        </div>
+        <!-- Form for Product Details -->
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+         
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" value="{{ product.name }}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="price">Price:</label>
+                    <input type="text" id="price" name="price" value="{{ product.price }}" class="form-control">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="sku_code">SKU Code:</label>
+                    <input type="text" id="sku_code" name="sku_code" value="{{ product.sku_code }}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="mrp">MRP:</label>
+                    <input type="text" id="mrp" name="mrp" value="{{ product.mrp }}" class="form-control">
+                </div>
+            </div>
+            <!-- Continue adding your input fields in pairs -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="sub_title">Sub title:</label>
+                        <input type="text" id="sub_title" name="sub_title" value="{{ product.sub_title }}" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="title">title:</label>
+                        <input type="text" id="title" name="title" value="{{ product.title }}" class="form-control">
+                    </div>
+                    </div>
+                    <div class="form-row">
+                    <div class="form-group">
+                        <label for="brand">Brand:</label>
+                        <input type="text" id="brand" name="brand" value="{{ product.brand }}" class="form-control">
+                    </div>
+                        <div class="form-group">
+                        <label for="color">Color:</label>
+                        <input type="text" id="color" name="color" value="{{ product.color }}" class="form-control">
+                    </div>
+                </div>
+                    <div class="form-row">
+                    <div class="form-group half-width">
+                        <label for="main_category">Main Category:</label>
+                        <select id="main_category" name="main_category" class="form-control">
+                            {% for category in main_categories %}
+                                <option value="{{ category.id }}" {% if product.main_category_id == category.id %}selected{% endif %}>
+                                    {{ category.name }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                  
+                    <div class="form-group half-width">
+                        <label for="sub_category">Sub Category:</label>
+                        <select id="sub_category" name="sub_category" class="form-control">
+                            {% for category in sub_categories %}
+                                <option value="{{ category.id }}" {% if product.sub_category_id == category.id %}selected{% endif %}>
+                                    {{ category.name }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="model_name">Model Name:</label>
+                        <input type="text" id="model_name" name="model_name" value="{{ product.model_name }}" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="warranty">Warranty:</label>
+                        <input type="text" id="warranty" name="warranty" value="{{ product.warranty }}" class="form-control">
+                    </div>
+                    </div>
+                    <div class="form-row">
+                    <div class="form-group">
+                        <label for="technology">Technology:</label>
+                        <input type="text" id="technology" name="technology" value="{{ product.technology }}" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="feature">Feature:</label>
+                        <input type="text" id="feature" name="feature" value="{{ product.feature }}" class="form-control">
+                    </div>
+                    </div>
+                    <div class="form-row">
+                    <div class="form-group">
+                        <label for="product_type">Product Type:</label>
+                        <input type="text" id="product_type" name="product_type" value="{{ product.product_type }}" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <input type="text" id="description" name="description" value="{{ product.description }}" class="form-control">
+                    </div>
+                    </div>
+                    <div class="form-row">
+                    <div class="form-group">
+                        <label for="active_product">Active Product:</label>
+                        <select id="active_product" name="active_product" class="form-control" required>
+                            <option value="true" {% if product.active_product %}selected{% endif %}>Active</option>
+                            <option value="false" {% if not product.active_product %}selected{% endif %}>Inactive</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="stock">Stock:</label>
+                        <input type="number" id="stock" name="stock" value="{{ product.stock }}" class="form-control">
+                    </div>
+                    </div>
+                    <div class="form-row">
+                    <div class="form-group">
+                        <label for="qty1">Quantity 1:</label>
+                        <input type="number" id="qty1" name="qty1" value="{{ product.qty1 }}" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="qty2">Quantity 2:</label>
+                        <input type="number" id="qty2" name="qty2" value="{{ product.qty2 }}" class="form-control">
+                    </div>
+                    </div>
+                    <div class="form-row">
+                    <div class="form-group">
+                        <label for="qty3">Quantity 3:</label>
+                        <input type="number" id="qty3" name="qty3" value="{{ product.qty3 }}" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="qty4">Quantity 4:</label>
+                        <input type="number" id="qty4" name="qty4" value="{{ product.qty4 }}" class="form-control">
+                    </div>
+                    </div>
+                    <div class="form-row">
+                    <div class="form-group">
+                        <label for="qty5">Quantity 5:</label>
+                        <input type="number" id="qty5" name="qty5" value="{{ product.qty5 }}" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="qty6">Quantity 6:</label>
+                        <input type="number" id="qty6" name="qty6"  value="{{ product.qty6 }}"class="form-control">
+
+                        </div>
+                        </div>
+                        <div class="form-row">
+                    <div class="form-group">
+                    <label for="qty7">Quantity 7:</label>
+                    <input type="number" id="qty7" name="qty7" value="{{ product.qty7 }}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="qty8">Quantity 8:</label>
+                    <input type="number" id="qty8" name="qty8" value="{{ product.qty8 }}" class="form-control">
+                </div>
+                </div>
+                <div class="form-row">
+                <div class="form-group">
+                  <label for="qty8">Quantity 9:</label>
+                  <input type="number" id="qty9" name="qty9" value="{{ product.qty9 }}"class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="qty8">Quantity 10:</label>
+                <input type="number" id="qty10" name="qty10" value="{{ product.qty10 }}"class="form-control">
+            </div>
+            </div>
+            <div class="form-row">
+            <div class="form-group">
+                  <label for="weight">Weight:</label>
+                  <input type="text" id="weight" name="weight" value="{{ product.weight }}"class="form-control">
+              </div>
+              <div class="form-group">
+                  <label for="dimensions">Dimensions (WxDxH):</label>
+                  <input type="text" id="dimensions" name="dimensions" value="{{ product.dimensions }}" class="form-control">
+              </div>
+              </div>
+              <div class="form-row">
+              <div class="form-group">
+                  <label for="installation_type">Installation Type:</label>
+                  <input type="text" id="installation_type" name="installation_type" value="{{ product.installation_type }}" class="form-control">
+              </div>
+              <div class="form-group">
+                  <label for="storage_capacity">Storage Capacity:</label>
+                  <input type="text" id="storage_capacity" name="storage_capacity" value="{{ product.storage_capacity }}" class="form-control">
+              </div>
+              </div>
+              <div class="form-row">
+              <div class="form-group">
+                  <label for="purification_modules">Purification Modules:</label>
+                  <textarea id="purification_modules" name="purification_modules" class="form-control">{{ product.purification_modules }}</textarea>
+              
+              </div>
+              
+       
+              <div class="form-group">
+                  <label for="input_water_pressure">Input Water Pressure:</label>
+                  <input type="text" id="input_water_pressure" name="input_water_pressure" value="{{ product.input_water_pressure }}"class="form-control">
+         
+              </div>
+             </div>
+             <div class="form-row">
+              <div class="form-group">
+                  <label for="input_water_temperature">Input Water Temperature:</label>
+                  <input type="text" id="input_water_temperature" name="input_water_temperature" value="{{ product.input_water_temperature }}" class="form-control">
+           
+                </div>
+              
+                <div class="form-group">
+                  <label for="input_water_chlorine_max">Input Water Chlorine (Max):</label>
+                  <input type="text" id="input_water_chlorine_max" name="input_water_chlorine_max" value="{{ product.input_water_chlorine_max }}"class="form-control">
+              </div>
+              </div>
+              
+              <div class="form-row">
+              <div class="form-group">
+                  <label for="input_water_tds">Input Water TDS:</label>
+                  <input type="text" id="input_water_tds" name="input_water_tds" value="{{ product.input_water_tds }}" class="form-control">
+              </div>
+              <div class="form-group">
+                  <label for="uv_lamp">UV Lamp:</label>
+                  <input type="text" id="uv_lamp" name="uv_lamp" value="{{ product.uv_lamp }}" class="form-control">
+              </div>
+              </div>
+              <div class="form-row">
+              <div class="form-group">
+                  <label for="uv_lamp_life">UV Lamp Life:</label>
+                  <input type="text" id="uv_lamp_life" name="uv_lamp_life" value="{{ product.uv_lamp_life }}" class="form-control">
+              </div>
+        
+              <div class="form-group">
+                  <label for="power_consumption">Power Consumption:</label>
+                  <input type="text" id="power_consumption" name="power_consumption" value="{{ product.power_consumption }}" class="form-control">
+              </div>
+              </div>
+
+              <div class="form-row">
+              <div class="form-group">
+                  <label for="operating_input_voltage">Operating Input Voltage:</label>
+                  <input type="text" id="operating_input_voltage" name="operating_input_voltage" value="{{ product.operating_input_voltage }}" class="form-control">
+              </div>
+
+              <div class="form-group">
+                  <label for="included_in_box">Included in the Box:</label>
+                  <textarea id="included_in_box" name="included_in_box">{{ product.included_in_box }}</textarea  class="form-control">
+              </div>
+              </div>
+
+              <div class="form-row">
+              <div class="form-group">
+                  <label for="product_warranty">Product Warranty:</label>
+                  <input type="text" id="product_warranty" name="product_warranty" value="{{ product.product_warranty }}" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="order_status">Order Status:</label>
+                <input type="text" id="order_status" name="order_status" value="{{ product.order_status }}" class="form-control">
+            </div>
+              </div>
+             
+    <div class="form-group text-center">
+        <button type="submit" class="btn btn-custom">Add Product</button>
+    </div>
+</form>
+</div>
+</body>
+</html>

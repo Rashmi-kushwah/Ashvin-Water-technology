@@ -1,0 +1,395 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width , intial-scale=1.0 , maximum-scale=1.0 , user-scalable=no">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-compatible" content="Ie-edge">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/all.min.css">
+        <script
+        src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+        
+        <title>login page</title>
+       
+      
+
+        <style>
+            *{
+    
+            margin: 0;
+                padding: 0;
+            }
+            .body{
+                background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            }
+            .logo{
+                height: 240px;
+                width: 75px;
+                
+              
+            }
+            .main{
+               
+              display: flex;
+                flex-direction: column;
+                align-items: center;
+                height: 100vh;
+                padding-top: 30px;
+                /* background-color: #f5fdf5; */
+                display: flex;
+            
+        
+            }
+           
+            .container{
+                outline-style: none;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+                width: 400px;
+                height:auto;
+                padding: 12px;
+                background-color: #fff;
+                display: flex;
+                flex-direction:column;
+                align-items: center;
+                border: none;
+                /* border-radius: 3%; */
+                margin-top: 5px;
+                gap: 10px;
+            }
+            .login{
+               font-family:Arial,  sans-serif;
+          
+                margin: 20px 0 0px 0;
+                font-size: 24px;
+              
+                
+            }
+            .email {
+     position: relative; 
+
+    background: #fff;
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    padding: 0 15px;
+    margin-bottom: 18px;
+    box-sizing: border-box;
+    }
+    .email i {
+        position: absolute;
+        left: 23px; /* Adjust the left position of the icon */
+        top: 40%; /* Center the icon vertically */
+        transform: translateY(-50%);
+        color: #3d3c3c; 
+        z-index: 1;
+    }
+    .password input {
+
+background: transparent;
+outline: none;
+border: 0;
+padding-left: 30px; 
+ }
+.email input {
+
+     background: transparent;
+    outline: none;
+    border: 0;
+    padding-left: 30px; 
+ }
+.email-box{
+flex-basis: 100%;
+display: flex;
+align-items: center;
+justify-content: center; 
+
+}
+.email,.password{
+width: 350px;
+height: 43px;
+background: #fff;
+display: flex;
+align-items: center;
+border-radius: 20px;
+padding: 0 15px;
+margin-bottom: 18px;
+box-sizing: border-box;
+}
+
+input {
+    width: 90%;
+    height: 45px;
+    margin-bottom: 10px; 
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 7px;
+    font-size: 15px;
+    padding-left: 20px;
+    font-weight: 500;
+   
+}
+input:focus {
+    outline: none;
+   
+}
+
+
+            .checkbox-container {
+            display: flex;
+            
+          
+        }
+        .checkbox-container p {
+            font-size: 15px;
+            color: #585555;
+           margin-right: 250px;
+            margin-left: 5px; 
+        }
+        .checkbox-container input[type="checkbox"] {
+            width: 15px; 
+            height: 15px;
+          
+        }
+       
+         
+            button{
+                width: 50%;
+                height: 50px;
+                border-radius: 45px;
+                border: none;
+            
+                background-color: #0033a0;
+                font-size:24px;
+                font-weight: bold;
+                color: white;
+            }
+            
+            a{
+                margin: 10px;
+                font-size: 14px;
+                text-decoration: none;
+                color: blue;
+            }
+            a:hover{
+                text-decoration: underline;
+            }
+            
+          
+            .login-button:hover{
+                background-color: #0055cc;
+            
+            }
+           
+            .style{
+                position: relative;
+                text-align: center;
+                font-size: 12px;
+                color: black;
+                display: block;
+            }
+            .style::before{
+                content: "";
+                display: block;
+                height: 0.9px;
+                width: 170px;
+                position: absolute;
+                left: 20px;
+                top: 20px;
+                background-color: rgba(0,0, 0,0.2);
+            }
+            
+            .style::after{
+                content: "";
+                display: block;
+                height: 0.9px;
+                width: 170px;
+                position: absolute;
+                right: 20px;
+                top: 20px;
+                background-color: rgba(0,0, 0,0.2);
+            }
+            
+           
+            .msg {
+                color: red;
+                text-align: center;
+                font-size: 23px;
+            }
+  
+
+    #whatsapp-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    
+  }
+  @keyframes iconPopup {
+    0% {
+        transform: scale(0); 
+        opacity: 0; 
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1; 
+    }
+    100% {
+        transform: scale(1); 
+        opacity: 0; 
+    }
+}
+
+#whatsapp-icon img, #call-icon img {
+    animation: iconPopup 5s ease infinite; 
+}
+
+  #whatsapp-icon img:hover {
+    transform: scale(1.1); }
+
+  #whatsapp-icon img {
+    width: 45px; 
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease; 
+  }
+ 
+  #call-icon {
+    position: fixed;
+    bottom: 100px;
+    right: 25px;
+    z-index: 999;
+}
+
+#call-icon img {
+  /* width: 45px; */
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease; 
+}
+
+#call-icon img:hover {
+    transform: scale(1.1); 
+}
+/* .link_p{
+            display: flex;
+            margin: 5px;
+        } */
+@media screen and (max-width: 600px) {
+    /* .main{
+        width: 100%;
+    } */
+ 
+  .container {
+    box-shadow: none;
+    width: 94%; 
+    padding: 10px; 
+  }
+
+  .email input {
+    width: 80%; 
+  }
+  .checkbox-container {
+           margin-left: 10px;
+        }
+        .checkbox-container {
+            display: flex;
+            
+            margin-bottom: 10px;
+        }
+        .checkbox-container p {
+           font-size: 10px;
+            margin-left: 10px; /* Adjust the space between checkbox and text */
+        }
+        .checkbox-container input[type="checkbox"] {
+            width: 18px; /* Adjust the width as needed */
+            height: 18px;
+            margin-left: 20px;
+          
+        }
+    }
+
+
+        </style>
+     
+        
+    </head>
+    <body>
+        <div class="main">
+        
+        
+
+            <form method="POST" action="" >
+                {% csrf_token %}
+                <div class="container">
+                    {% if error %}
+                    <div class="msg">
+                        <h4>{{ error }}</h4>
+                    </div>
+                    {% endif %}
+                    <h4><span class="login"> Customer Login</span></h4>
+                 
+                    <input type="email" id="email" name="email" placeholder="please enter your email">
+                
+                  
+                    <input type="password" id="passwordField" name="password" placeholder="please enter your password ">
+                   
+                    <div class="checkbox-container">
+                        <input type="checkbox" onclick="showPassword()"> 
+                        <p>Show Password</p> 
+                    </div>
+                    <div class="checkbox-container" style="margin-right: 8px;">
+                        <input type="checkbox" id="rememberMeCheckbox" name="remember_me">
+                        <p> Remember me</p>  
+                    </div>
+
+                    <button class="login-button">Login</button>
+
+            </form> 
+             <div class="link_p">
+                <h4><a href="/forgot_password/">Forgot password?</a></h4>
+                
+            </div>   
+                    <div class="style">or</div> 
+
+                    <h4>Do not have acoount</h4>
+                    
+                    <a href='/register/'><h4>Register</h4></a>
+
+                </div>
+                 
+           
+            
+        </div>
+
+    </body>
+    
+    <script>
+        document.getElementById('rememberMeCheckbox').addEventListener('change', function() {
+            if (this.checked) {
+                document.getElementById('rememberMeCheckbox').value = "True";
+            } else {
+                document.getElementById('rememberMeCheckbox').value = "False";
+            }
+        });
+    </script>
+    
+  
+      <script>
+        function showPassword() {
+            var passwordField = document.getElementById("passwordField");
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+            } else {
+                passwordField.type = "password";
+            }
+        }
+
+
+    </script>
+       
+</html>

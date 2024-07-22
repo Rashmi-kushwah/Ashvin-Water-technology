@@ -1,0 +1,298 @@
+{% extends 'admin_nav.html' %}
+
+{% block main %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .registration-form {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            background-color: #fff;
+        }
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        .form-group {
+            flex: 0 0 48%;
+            margin: 1%;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .form-group label {
+            flex: 1;
+            margin-bottom: 0;
+            font-weight: bold;
+            opacity: 0.7;
+        }
+        .form-group .form-control, .form-group .form-check-input {
+            flex: 2;
+        }
+        .form-check {
+            display: flex;
+            align-items: center;
+        }
+        .form-check-label {
+            margin-left: 10px;
+            opacity: 0.7;
+        }
+        .btn-custom {
+    background-color: #f5a029;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    border: none;
+    text-align: center;
+    display: block; /* Ensure it takes full width by default */
+    margin: 0 auto; /* Center align horizontally */
+    width: 200px; /* Adjust width as needed */
+}
+
+    </style>
+</head>
+<body>
+    <div class="registration-form">
+        <h2 class="text-center">Add Product Form</h2>
+        <p class="text-center">Please fill out the form below to Add product.</p>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group half-width">
+                    {{ product_form.name.label_tag }} {{ product_form.name }}
+                </div>
+                <div class="form-group half-width">
+                    {{ product_form.title.label_tag }} {{ product_form.title }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group half-width">
+                    {{ product_form.sub_title.label_tag }} {{ product_form.sub_title }}
+                </div>
+                <div class="form-group half-width">
+                    {{ product_form.price.label_tag }} {{ product_form.price }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group half-width">
+                    {{ product_form.mrp.label_tag }} {{ product_form.mrp }}
+                </div>
+                <div class="form-group half-width">
+                    {{ product_form.sku_code.label_tag }} {{ product_form.sku_code }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group half-width">
+                    {{ product_form.brand.label_tag }} {{ product_form.brand }}
+                </div>
+                <div class="form-group half-width">
+                    {{ product_form.color.label_tag }} {{ product_form.color }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    {{ product_form.main_category.label_tag }} {{ product_form.main_category }}
+                </div>
+                <div class="form-group">
+                    {{ product_form.sub_category.label_tag }} {{ product_form.sub_category }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    {{ product_form.model_name.label_tag }} {{ product_form.model_name }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    {{ product_form.img1.label_tag }} {{ product_form.img1 }}
+                </div>
+                <div class="form-group">
+                    {{ product_form.img2.label_tag }} {{ product_form.img2 }}
+                </div>
+                <div class="form-group">
+                    {{ product_form.img3.label_tag }} {{ product_form.img3 }}
+                </div>
+                <div class="form-group">
+                    {{ product_form.img4.label_tag }} {{ product_form.img4 }}
+                </div>
+                <div class="form-group">
+                    {{ product_form.img5.label_tag }} {{ product_form.img5 }}
+                </div>
+                <div class="form-group">
+                    {{ product_form.img6.label_tag }} {{ product_form.img6 }}
+                </div>
+                <div class="form-group">
+                    {{ product_form.img7.label_tag }} {{ product_form.img7 }}
+                </div>
+                <div class="form-group">
+                    {{ product_form.img8.label_tag }} {{ product_form.img8 }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    {{ product_form.warranty.label_tag }} {{ product_form.warranty }}
+                </div>
+                <div class="form-group">
+                    {{ product_form.technology.label_tag }} {{ product_form.technology }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    {{ product_form.feature.label_tag }} {{ product_form.feature }}
+                </div>
+                <div class="form-group">
+                    {{ product_form.product_type.label_tag }} {{ product_form.product_type }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    {{ product_form.description.label_tag }} {{ product_form.description }}
+                </div>
+            </div>
+            <!-- <div class="form-row">
+                <div class="form-group">
+                    {{ product_form.active_product.label_tag }} {{ product_form.active_product }}
+                </div> -->
+                <div class="form-row">
+                    <div class="form-group">
+                        {{ product_form.active_product.label_tag }}
+                        <div class="custom-control custom-switch">
+                            {{ product_form.active_product }}
+                            <label class="custom-control-label" for="{{ product_form.active_product.id_for_label }}"></label>
+                        </div>
+                    </div>
+                
+                
+                <div class="form-group">
+                    {{ product_form.stock.label_tag }} {{ product_form.stock }}
+                </div>
+            </div>
+           
+            <div class="form-row">
+                <div class="form-group">
+                    {{ product_form.qty1.label_tag }} {{ product_form.qty1 }}
+                </div>
+                <div class="form-group">
+                    {{ product_form.qty2.label_tag }} {{ product_form.qty2 }}
+                </div>
+                <div class="form-group">
+                    {{ product_form.qty3.label_tag }} {{ product_form.qty3 }}
+                </div>
+                <div class="form-group">
+                    {{ product_form.qty4.label_tag }} {{ product_form.qty4 }}
+                </div>
+                <div class="form-group">
+                    {{ product_form.qty5.label_tag }} {{ product_form.qty5 }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    {{ product_form.qty6.label_tag }} {{ product_form.qty6 }}
+                </div>
+                <div class="form-group">
+                    {{ product_form.qty7.label_tag }} {{ product_form.qty7 }}
+                </div>
+                <div class="form-group">
+                    {{ product_form.qty8.label_tag }} {{ product_form.qty8 }}
+                </div>
+                <div class="form-group">
+                    {{ product_form.qty9.label_tag }} {{ product_form.qty9 }}
+                </div>
+                <div class="form-group">
+                    {{ product_form.qty10.label_tag }} {{ product_form.qty10 }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    {{ product_form.weight.label_tag }} {{ product_form.weight }}
+                </div>
+                <div class="form-group">
+                    {{ product_form.dimensions.label_tag }} {{ product_form.dimensions }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    {{ product_form.installation_type.label_tag }} {{ product_form.installation_type }}
+                </div>
+                <div class="form-group">
+                    {{ product_form.storage_capacity.label_tag }} {{ product_form.storage_capacity }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    {{ product_form.purification_modules.label_tag }} {{ product_form.purification_modules }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    {{ product_form.input_water_pressure.label_tag }} {{ product_form.input_water_pressure }}
+                </div>
+                <div class="form-group">
+                    {{ product_form.input_water_temperature.label_tag }} {{ product_form.input_water_temperature }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    {{ product_form.input_water_chlorine_max.label_tag }} {{ product_form.input_water_chlorine_max }}
+                </div>
+                <div class="form-group">
+                    {{ product_form.input_water_tds.label_tag }} {{ product_form.input_water_tds }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    {{ product_form.uv_lamp.label_tag }} {{ product_form.uv_lamp }}
+                </div>
+                <div class="form-group">
+                    {{ product_form.uv_lamp_life.label_tag }} {{ product_form.uv_lamp_life }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group half-width">
+                    {{ product_form.power_consumption.label_tag }} {{ product_form.power_consumption }}
+                </div>
+                <div class="form-group half-width">
+                    {{ product_form.operating_input_voltage.label_tag }} {{ product_form.operating_input_voltage }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group ">
+                    {{ product_form.included_in_box.label_tag }} {{ product_form.included_in_box }}
+                </div>
+                </div>
+                <!-- <div class="form-group ">
+                    {{ product_form.product_warranty.label_tag }} {{ product_form.product_warranty }}
+                </div> -->
+                <div class="form-row">
+                <div class="form-group col-md-6"> <!-- Half width for medium screens and larger -->
+                    {{ product_form.product_warranty.label_tag }} {{ product_form.product_warranty }}
+                </div>
+          
+              
+                    <div class="form-group">
+                        {{ product_form.order_status.label_tag }} {{ product_form.order_status }}
+                    </div>
+                    </div>
+
+
+            <!-- Add more form rows as needed for the remaining fields -->
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-custom">Add Product</button>
+            </div>
+            </form>                  
+        </body>
+        </html>      
+
+        {% endblock %}        

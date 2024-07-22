@@ -1,0 +1,79 @@
+{% include 'header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            /* background-color: #f8f9fa; */
+        }
+        .order-card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .order-header {
+            background-color: #333;
+            color: #fff;
+            padding: 7px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .order-body {
+            padding: 20px;
+        }
+        .order-image {
+            max-width: 100px;
+            max-height: 100px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .order-details {
+            /* margin-left: 220px; */
+        }
+        .order-details span {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <br>
+
+    
+
+    <div class="container mt-5">
+        <h1 class="mb-4">Order List</h1>
+        {% for order in orders %}
+            <div class="order-card">
+                <div class="order-header">
+                    <h5>Order ID: {{ order.order_id }}</h5>
+                </div>
+                <div class="order-body row">
+                    <div class="col-md-2">
+                        <img src="{{ order.img1.url }}" alt="Product Image" class="order-image">
+                    </div>
+                    <div class="col-md-10 order-details">
+                        {% if order.order_status != "New" %}
+                         <span><strong>Tracking Link:</strong> <a href="{{ order.tracking_link }}" target="_blank">Track Order</a></span>
+                       {% endif %}
+                        <span><strong>Product ID:</strong> {{ order.Product_id }}</span>
+                        <span><strong>User UID:</strong> {{ order.user_uid }}</span>
+                        <span><strong>Name:</strong> {{ order.first_name }} {{ order.last_name }}</span>
+                        <span><strong>Address:</strong> {{ order.house_no }}, {{ order.street }}, {{ order.street1 }}, {{ order.street2 }}, {{ order.city }}, {{ order.region }}, {{ order.pin_code }}, {{ order.country }}</span>
+                        <span><strong>Order Status:</strong> {{ order.order_status }}</span>
+                        <span><strong>Total Amount:</strong> {{ order.total_amount }}</span>
+                        <span><strong>Price:</strong> {{ order.price }}</span>
+                        <span><strong>Quantity:</strong> {{ order.qty }}</span>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <li class="list-group-item">No orders found.</li>
+        {% endfor %}
+    </div>
+</body>
+</html>

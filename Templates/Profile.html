@@ -1,0 +1,220 @@
+{% include 'header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+ <style>
+    body {
+    background: #f5f5f5;
+    font-family: Arial, sans-serif;
+}
+
+.profile-card {
+    margin-top: 7%;
+    margin-bottom: 10px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 80px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+    /* margin-bottom: 20px; */
+}
+
+.profile-image {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin-right: 20px;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-image input[type="file"] {
+    display: none;
+}
+
+.profile-image::after {
+    content: 'Upload';
+    position: absolute;
+    bottom: -25px; /* Change this to position the text below the image */
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.profile-info h3 {
+    margin: 0;
+    font-size: 24px;
+    margin-top: 70px;
+}
+
+.profile-info p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.profile-tabs .nav-tabs {
+    border-bottom: 1px solid #ddd;
+}
+
+.profile-tabs .nav-link {
+    color: #333;
+}
+
+.profile-tabs .nav-link.active {
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+}
+
+.tab-content {
+    padding: 20px 0;
+}
+
+.order-count {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    padding: 5px 10px;
+    border-radius: 12px;
+    margin-left: 10px;
+    vertical-align: middle;
+    position: relative;
+    top: -3px;
+}
+
+
+.profile-tabs .nav-link.active {
+    background-color: #000; /* Background color for active tab */
+    color: #fff; /* Text color for active tab */
+    border-color: #000; /* Border color for active tab */
+}
+
+.nav-item a:hover{
+    background-color: #000;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+        .profile-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .profile-image {
+            margin-bottom: 15px;
+        }
+
+        .profile-info h3 {
+           
+         margin-top: 10px;
+        }
+        
+        .profile-tabs .nav-link {
+      
+            font-size: 12px; 
+            padding: 8px 15px; 
+        }
+        .profile-tabs .nav-link:hover{
+        background-color:rgba(0, 0, 0, 0.7) ;
+    }
+}
+    @media (max-width: 576px) {
+        .order-count {
+            border: 1px solid red;
+            font-size: 14px; 
+            padding: 4px 6px;
+        }
+    }
+ </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="profile-card">
+               
+                   {% for u in user_data %}
+
+            <div class="profile-header">
+           
+                <div class="profile-image" onclick="document.getElementById('uploadProfilePic').click();">
+                    <img id="profilePic" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAACUCAMAAAAqEXLeAAAAM1BMVEXk5ueutLfp6uu4vsGrsbTh4+Sxt7rd4OHY29zV2NqnrrLM0NLS1dfJzc/b3d/Gysy/xMYm4gOUAAADxUlEQVR4nO2b0ZajIAxANSAgoPL/X7vY2tPO2CokNLi73KeZPt0TCAQMXddoNBqNRqPRaDQajUajUQqATs/GGD1A/POSDC6o/oFYxqG20I55ElLK/om0Mrj5QvEEI9Sr4MNTqqCvommU3Rs+4il0bb0I6OVNEF80+6W2Ygdjf+i4aqraU/M4jA9NV9MSQopjtKw45INIc4yW4fqO9Swhw7HaiGc5RsuJXxFcnmO0HNlzXOc6RthLDnXutAslc/LAhAhkHHBWyRkRyIhilUzaDd+E0nPmzsfa7ATBp5i6Zb/BsUkOuBnZsyZ49jr+YjlzSeJHO27hTKmj0YoRxSQ5YnN7xfIczAi53bMdJYCgGAk8kpTR5lrPNU1ScUxKGClTMkoaDknCUn6Do16DieYoPYdkIEpy1BhN8v+SXIiSLImDOihyS/q/YDHvDFGSpTYfiAUGy2ULtQriKdUExZHrkEPKHMuSN103kyS5Lloo481zeujQ11W3QHIs5TcMPpCK7bYXn9+ct/vo6wGe7eYOYK/VeFbyDeSJUfJ+f8j80rQ5Mn8VmzGB5KktngBireS91r+RPeCSbbN5kntxLhm/PDzJrNBZLqr2ZJVsslbrjc+QrNfRkr49MpW6bzHv2r/2qKFqZ5AO58GUoXoDoJPHwZQsVxYnwCAOOsGu0Kp2Zwz2vaaUwVylNzHWG6HfhTP+v1SfjD+Azi9CySdKLGN3nShuAAza+ClElskbfa0gPoFXasvsWJ20NqP37ob3o5nn4TKuUWP2kxBKqXs+y61LOv4Q56Wbu7qiMXrGBWXthwXo5mxtH6ZR18mhGMApqP5ku9lMt1znFl0XxtOW45+rphSeL+OhM4v6PMIHxJH3LN3x0Lmjvfo0nmr5ftmml5RZeOhpxVffbkCciUTFu6f4WvUGQxnF1bIXX+mdBb2gkuUTVpQ/9oBLO82kI/tQOIU06hbtTFMVnZqu1GT8hQ3lrgxIfV+HSFUmgWAumjC/sSWu+sF90XClQHMq5rI015Lc2P296fhqSfpwQmuVzLCkrJg8jiv4pYjPEX0PzJAzTySuIRkcrdciF9S9P+F7MQrMB1z80wG0ZXb3J9Pi89My15HYuIuTzNwgB1LvD5q8ASd29iHJ3MVrKPZ533FrZM1GehyHWooZzzeovaYUkpsLKqX2ndTTOLHVlERy5yJn9bO3TJNEdyYVwaYdJYg9u0TSxpv8lIVIUqcY9dkAlaTmRVpfcQHJlEnJX+3+IqUUQr4vL0bSK5NZVCbpKQxUJsWx0Wj8G/wBmtMx3Yjxjf0AAAAASUVORK5CYII=" alt="Profile Image">
+                    <input type="file" id="uploadProfilePic" accept="image/*" onchange="uploadImage()" style="display: none;">
+                </div>
+                
+                <div class="profile-info">
+                    <h3>{{u.name}}</h3>
+                    <p>Email: {{u.email}}</p>
+                    <p>Phone: +{{u.phone_number}}</p>
+                </div>
+            </div>
+            {% endfor %}
+
+         
+            <div class="profile-tabs">
+                <ul class="nav nav-tabs" id="profileTab" role="tablist">
+                    <li class="nav-item">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="all-orders-tab" href="{% url 'user_all_order' %}" role="tab" aria-controls="all-orders" aria-selected="true">All Orders<span class="order-count">{{all_orders_count}}</span></a>
+                        </li>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="new-orders-tab" href="{% url 'user_new_order' %}" role="tab" aria-controls="new-orders" aria-selected="false">New Orders<span class="order-count">{{new_orders_count}}</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="shipped-orders-tab"href="{% url 'user_shipped_order' %}" role="tab" aria-controls="shipped-orders" aria-selected="false">Shipped Orders<span class="order-count">{{shipped_orders_count}}</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="delivered-orders-tab" href="{% url 'user_delivered_order' %}" role="tab" aria-controls="delivered-orders" aria-selected="false">Delivered Orders<span class="order-count">{{delivered_orders_count}}</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="ready-orders-tab" href="{% url 'user_ready_order' %}" role="tab" aria-controls="ready-orders" aria-selected="false">Ready Orders<span class="order-count">{{ready_orders_count}}</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="cancel-orders-tab" href="{% url 'user_cancel_order' %}" role="tab" aria-controls="cancel-orders" aria-selected="false">Cancelled Orders<span class="order-count">{{ready_orders_count}}</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function uploadImage() {
+            const fileInput = document.getElementById('uploadProfilePic');
+            const profilePic = document.getElementById('profilePic');
+    
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    profilePic.src = e.target.result;
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+        }
+    </script>
+    
+</body>
+</html>
+{% include 'footer.html' %}

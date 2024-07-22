@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+    <title>Responsive Header</title>
+    <style>
+      
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header1 {
+            position: fixed; 
+            top: 0;
+            width: 100%;
+            z-index: 3;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgb(172, 168, 168);
+            background-color: #333;
+            padding: 10px 20px;
+            color: #fff;
+        }
+
+        .logo img {
+            height: 30px;
+        }
+
+        .nav1 ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav1 a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            margin-left: 20px;
+        }
+
+        .nav1 .new-launches {
+            position: relative;
+        }
+
+        .nav1 .new-launches::after {
+            content: '*';
+            color: orange;
+            position: absolute;
+            top: -0.4em;
+            right: -0.5em;
+            font-size: 25px;
+        }
+
+        .actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .actions a {
+            text-decoration: none;
+        }
+
+        .actions i {
+            color: white;
+        }
+
+        .actions a i {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+            gap: 10px;
+            font-size: 23px;
+        }
+
+        .actions .icon {
+            font-size: 18px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .actions .btn1 {
+            background-color: #fff;
+            color: #333;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            text-decoration: none;
+            border-radius: 45px;
+            font-size: 13px;
+        }
+
+        .actions .btn1:hover {
+            background-color: rgb(21, 21, 206);
+            color: white;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        /* .dropdown .service .new-launch a{
+            text-decoration: none;
+            
+        }
+       */
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            color: rgb(70, 68, 68);
+            min-width: 300px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 7px 10px;
+            text-decoration: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            color: black;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .submenu {
+            display: none;
+            position: absolute;
+            top: -100%;
+            left: 0;
+            background-color: #fff;
+            color: rgb(70, 68, 68);
+            min-width: 300px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 16px;
+            z-index: 1;
+        }
+
+        .has-submenu {
+            position: relative;
+            display: block;
+        }
+
+        .dropdown-content .has-submenu:hover .submenu {
+            display: block;
+        }
+
+        .dropdown-content .submenu {
+            display: none;
+            position: absolute;
+            left: 100%;
+            top: 0;
+            margin-left: 1px;
+            min-width: 300px;
+        }
+
+        .dropdown-content .has-submenu:hover .submenu {
+            display: block;
+        }
+
+        /* Styles for angle icons */
+        .fa-angle-down, .fa-angle-right {
+            width: auto; /* Auto width to adjust based on the font size */
+            padding: 0; 
+            line-height: 1; 
+        }
+
+        .Cart {
+            position: relative;
+            display: inline-block;
+        }
+
+        .ord-sup {
+            position: relative;
+            display: inline-block;
+        }
+
+        .sup_odr {
+            position: absolute;
+            right: 40px;
+            font-size: 13px;
+            bottom: 12px;
+            margin-inline: block;
+            padding: 2px;
+            text-align: center;
+            font-weight: 250;
+        }
+
+        .sup_cart {
+            position: absolute;
+            right: -10px;
+            /* font-size: 20px; */
+            color: black;
+            background-color: whitesmoke;
+            border-radius: 60px;
+            width: 18px;
+            height: 20px;
+            margin-inline: block;
+            padding: 2px;
+            text-align: center;
+            font-weight: 250;
+            margin-top: -10px;
+        }
+
+        .sup_cart p {
+            margin-top: 7px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header1 {
+                padding: 10px;
+                width: 100%;
+            }
+
+            .header .logo img {
+                margin-bottom: 10px;
+            }
+            .header-container {
+                flex-wrap: wrap;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            .header-icons {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .header .nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .actions .btn1 {
+                display: none;
+            }
+
+            .header.hide-icons .actions {
+                display: flex; /* Show actions when header has class .hide-icons */
+                justify-content: flex-end;
+                gap: 5px;
+            }
+
+            .header.hide-icons .actions a {
+                color: white;
+            }
+
+            .header.hide-icons .actions i {
+                display: flex;
+            }
+
+            .header.actions .btn1 {
+                width: 100%;
+                text-align: center;
+            }
+
+            .dropdown {
+                display: none; /* Hide dropdowns by default in responsive view */
+            }
+
+            .dropdown-content {
+                display: none; /* Hide dropdown content by default in responsive view */
+            }
+
+            .service,
+            .new-launch {
+                display: none; /* Hide service and new-launch links by default in responsive view */
+            }
+        }
+        .search-bar {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #fff;
+            padding: 14px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 3; /* Higher than header z-index */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgb(211, 208, 208);
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border: 1px solid rgb(236, 236, 236);
+        }
+
+        .search-bar input {
+            width: 70%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .search-bar button {
+            background-color: transparent;
+            color: black;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-bar button i {
+            font-size: 18px;
+        }
+/* .close-search{
+color: red;
+} */
+@media (max-width: 768px) {
+   
+}
+    /******************* WHATSAPP ICON***********/
+    #whatsapp-icon {
+    position: fixed;
+    bottom: 60px;
+    right: 16px;
+    z-index: 999;
+    
+  }
+  /* 
+  @keyframes iconPopup {
+    0% {
+        transform: scale(0);
+        opacity: 0; 
+    }
+    50% {
+        transform: scale(1.2); 
+        opacity: 1; 
+    }
+    100% {
+        transform: scale(1); 
+        opacity: 0; 
+    }
+} */
+
+/* #whatsapp-icon img, #call-icon img {
+    animation: iconPopup 5s ease infinite; 
+} */
+
+  #whatsapp-icon img:hover {
+    transform: scale(1.1); 
+}
+
+  #whatsapp-icon img {
+    width: 50px; 
+    height: auto;
+    cursor: pointer;
+    
+    /* transition: transform 0.3s ease;  */
+  }
+  
+  #call-icon {
+    position: fixed;
+    bottom: 120px;
+    right: 20px;
+    z-index: 999;
+}
+
+#call-icon img {
+    width: 43px; 
+    height: auto;
+    cursor: pointer;
+    /* transition: transform 0.3s ease;  */
+    border-radius: 50%;
+}
+
+/* #call-icon img:hover {
+    transform: scale(1.1); 
+} */
+/* *{
+  border: 1px solid green;
+} */
+
+
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 10px;
+    right: 20px;
+    background-color: #003f8a;
+    border: none;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+}
+
+.scroll-to-top svg {
+    fill: #fff;
+}
+
+.scroll-to-top:hover {
+    background-color: #0056b3;
+}
+
+.scroll-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Montserrat:wght@400&display=swap');
+
+
+.logo-link {
+    text-decoration: none;
+}
+
+.logo {
+    font-family: 'Arial', sans-serif;
+   
+    background-color: #f4f4f9; /* Light background for contrast */
+    text-align: center;
+    padding: 5px 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* transition: transform 0.3s, box-shadow 0.3s; */
+ 
+}
+
+.logo h4 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    color: #d4af37;
+    margin: 0;
+    padding: 0;
+}
+
+
+.logo p {
+    font-style: italic;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    color: #555; /* Darker gray for better readability */
+    margin: 0;
+    letter-spacing: 1.5px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Enhanced shadow for better visibility */
+}
+
+
+.logo:hover {
+    /* transform: translateY(-5px); */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  
+}
+@media (max-width: 768px) {
+    .logo {
+
+    padding: 2px 20px;
+
+ 
+}
+.search-bar {
+    padding: 12px;
+}
+
+}
+    </style>
+</head>
+<body>
+    <header class="header1">
+        <a href="/" style="text-decoration: none;">
+        <div class="logo">
+            <h4>Ashvin</h4>
+            <p>Watertechnology</p>
+        </div>
+    </a>
+
+        <nav class="nav1">
+            <ul>
+                <li class="dropdown">
+              
+
+
+                    <a href="#" class="dropbtn new_launches" style="text-decoration: none;">Products <i class="fa fa-angle-down"></i></a>
+                    <!-- Dropdown content -->
+                    <div class="dropdown-content">
+                        
+                        {% for p in main_Category %}
+                        <div class="has-submenu">
+                        <!-- <a href="#" style="color:rgb(105, 102, 102); font-size: 16px;"><i class="fa fa-tint"></i> {{p.main_Categorytype}} </i></a> -->
+                            <a href="{% url 'Product_Main_Category' p.id %}" style="color:rgb(105, 102, 102); font-size: 16px;">{{p.main_Categorytype}}<i class="fa fa-angle-right"></i></a>
+                            
+                            <div class="submenu">
+                                <!-- <a href="/water-purifiers/">All Water purifiers</a> -->
+                                {% for s in sub_category %}
+                                {% if s.main_category.id == p.id %}
+                                    <a href="{% url 'Product_sub_Category' s.id %}" style="color:rgb(105, 102, 102); font-size: 16px;"> {{s.Sub_Category}}</i></a>
+                                    {% endif %}
+                                {% endfor %}
+                                <!-- <a href="#" style="color:rgb(105, 102, 102); font-size: 16px;"><i class="fa fa-tint"></i> All Water Purifiers </i></a>
+                                <a href="#" style="color:black; font-size: 16px;"><i class="fa fa-broom"></i> Vacuum Cleaners </a> -->
+                            </div>
+                        </div>    
+                       {% endfor %}
+
+
+                       
+                      
+                        
+                        </div>
+                    </div>
+                </li>
+                <li class="service"><a href="#" style="text-decoration: none;">Service</a></li>
+                <li class="new-launch"><a href="/New_Launchproducts/" class="new-launches" style="text-decoration: none;">New Launches</a></li>
+            </ul>
+        </nav>
+        <div class="actions">
+            <a href="#" id="search-icon"style="text-decoration: none;"><i class="fa fa-search" aria-hidden="true" ></i></a>
+            <div  class="search-box">
+        
+                <!-- <a href="#" id="close-search"><i class="fa fa-times" aria-hidden="true"></i></a> -->
+            </div>
+            <div class="Cart">
+            <a href="/cart/" style="text-decoration: none;"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                <sup class="sup_cart"> <p>{{ cart_count }}</p> </sup>
+            </a>
+        </div>
+        
+            <a href="/profiles/" style="text-decoration: none;"><i class="fas fa-user" ></i></a>
+
+            <a href="#" class="btn1">Book Demo</a>
+            <a href="#" class="btn1">Buy AMC</a>
+        </div>
+    </header>
+    
+    
+    <!----------SLIDER CLOSE ------------->
+    </div>
+    <div class="search-bar" id="search-bar">
+        <input type="text" placeholder="Search Edureka Forbes.....">
+        <button id="close-search">X</button>
+    </div>
+
+</body>
+</html>
+
+
+
+
+</script>
+
+
+    <!--  WHATSAPP ICON START -->
+
+
+   <div id="whatsapp-icon">
+        <a href="https://wa.me/8193036931?text=hi" target="_blank">
+          <img src="https://cdn.pixabay.com/photo/2015/08/03/13/58/whatsapp-873316_1280.png" alt="WhatsApp">
+        </a>
+      </div>
+      <div id="call-icon">
+        
+        <a href="tel:+918193036931"target="_blank">
+      
+      
+          <img src="data:image/png;base64,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" alt="Call">
+      </a>
+      
+      
+      </div>  
+    
+      <!-- Scroll to Top Button -->
+<button id="scrollToTopBtn" class="scroll-to-top">
+    <svg width="24" height="24" viewBox="0 0 24 24">
+        <path fill="#fff" d="M4 12l1.41 1.41L12 6.83l6.59 6.58L20 12l-8-8-8 8z"/>
+    </svg>
+</button>
+
+      </div>   
+       <!-- Scroll to Top Button -->
+  
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const searchIcon = document.getElementById("search-icon");
+        const searchBar = document.getElementById("search-bar");
+        const closeSearch = document.getElementById("close-search");
+
+        // Load the search bar state from localStorage
+        const searchBarState = localStorage.getItem("searchBarState");
+        if (searchBarState === "open") {
+            searchBar.style.display = "flex";
+        } else {
+            searchBar.style.display = "none";
+        }
+
+        searchIcon.addEventListener("click", (e) => {
+            e.preventDefault();
+            searchBar.style.display = "flex";
+            localStorage.setItem("searchBarState", "open"); // Save state as open
+        });
+
+        closeSearch.addEventListener("click", () => {
+            searchBar.style.display = "none";
+            localStorage.setItem("searchBarState", "closed"); // Save state as closed
+        });
+    });
+</script>
+ <!--  WHATSAPP ICON CLOSE -->
+ <script>
+    document.addEventListener('DOMContentLoaded', function() {
+var scrollToTopBtn = document.getElementById('scrollToTopBtn');
+var rootElement = document.documentElement;
+
+function handleScroll() {
+// Show button when page is scrolled down 300px
+if (rootElement.scrollTop > 300) {
+    scrollToTopBtn.classList.add('show');
+} else {
+    scrollToTopBtn.classList.remove('show');
+}
+}
+
+function scrollToTop() {
+// Scroll to top behavior
+rootElement.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+});
+}
+
+// Event listeners
+scrollToTopBtn.addEventListener('click', scrollToTop);
+document.addEventListener('scroll', handleScroll);
+});
+
+</script>
+

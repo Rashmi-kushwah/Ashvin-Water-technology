@@ -1,0 +1,201 @@
+{% include 'header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            /* background-color: #f8f9fa; */
+        }
+
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .table img {
+            width: 50px;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .quantity-select {
+            width: 60px;
+        }
+        th{
+            color: rgb(124, 124, 124);
+        }
+        .btn {
+            background-color: rgb(39, 39, 139);
+            border-radius: 45px;
+            color: white;
+        }
+        .btn:hover {
+            color: #fff;
+        }
+
+        
+        .messages {
+    list-style-type: none; /* Removes bullet points */
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color:  #155724;
+}
+
+.message {
+    margin: 5px 0;
+    padding: 8px 15px;
+    background-color: #dff0d8; /* Light green background */
+    border: 1px solid #c3e6cb; /* Green border */
+    color: #155724; /* Dark green text */
+    border-radius: 4px;
+}
+@media (max-width: 768px) {
+.messages {
+    
+    padding: 20px;
+
+    font-size: 13px;
+   
+}
+}
+
+    </style>
+</head>
+<body>
+    <div class="container-fluid" style="margin-top: 20px;">
+        <h1 class="text-center mb-4">Cart</h1>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Products</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in cart_product %}
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="{{ item.img1.url }}" alt="{{ item.title }}" class="mr-3">
+                                        <span>{{ item.title }}</span>
+                                    </div>
+                                </td>
+                                <td style="font-weight: 600;">₹{{ item.price }}</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <select class="custom-select quantity-select" data-product-id="{{ item.id }}" data-price="{{ item.price }}" name="qty" required>
+                                            <option value="{{ item.qty }}">{{ item.qty }}</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                        </select>
+                                    
+                                    
+                                        <!-- <select class="form-control quantity-select" data-product-id="{{ item.id }}" data-price="{{ item.price }}" name="qty" required>
+                                            <option value="{{ item.qty }}">{{ item.qty }}</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="7">9</option>
+                                            <option value="8">10</option>
+                                        </select> -->
+                                        <form method="post" action="/remove_product/">
+                                            {% csrf_token %}
+                                        <!-- <i class="fa fa-trash-o" aria-hidden="true" style="margin-left: 30px; font-size: 20px;"  value="{{item.id}}" name="remove" type="submit"></i> -->
+                                        <button class="remove-button" type="submit" value="{{item.id}}" name="remove" style="background: none; border: none; outline: none;"> 
+                                            <i class="fa fa-trash-o" style="margin-left: 20px; font-size: 20px;"></i> </button>
+                                    </form>
+                                    </div>
+                             
+                                </td>
+                                
+                                <td class="product-total" style="color: rgb(11, 11, 139); font-weight: 700; font-size: 20px;">₹{{ item.total_amount }}</td>
+                           
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mt-4">
+                
+                    <h5>Total: <span id="cart-total">₹{{ cart_total }}</span></h5>
+                    <a href="/check_out/"><button class="btn">Check Out</button></a>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            function updateTotal() {
+                let total = 0;
+                $('tbody tr').each(function () {
+                    const price = parseFloat($(this).find('.quantity-select').data('price'));
+                    const quantity = parseInt($(this).find('.quantity-select').val());
+                    const productTotal = price * quantity;
+                    $(this).find('.product-total').text('₹' + productTotal.toFixed(2));
+                    total += productTotal;
+                    
+                    // Make AJAX call to update the quantity in the database
+                    const productId = $(this).find('.quantity-select').data('product-id');
+                    $.ajax({
+                        url: '{% url "update_cart" %}',
+                        type: 'POST',
+                        data: {
+                            'product_id': productId,
+                            'quantity': quantity,
+                            'total_amount': productTotal,
+                            'csrfmiddlewaretoken': '{{ csrf_token }}'
+                        },
+                        success: function (response) {
+                            console.log('Cart updated successfully');
+                        },
+                        error: function (xhr, status, error) {
+                            console.error('Failed to update cart:', error);
+                        }
+                    });
+                });
+                $('#cart-total').text('₹' + total.toFixed(2));
+            }
+
+            $('.quantity-select').on('change', updateTotal);
+        });
+    </script>
+</body>
+</html>

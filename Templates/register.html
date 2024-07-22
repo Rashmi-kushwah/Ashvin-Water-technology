@@ -1,0 +1,352 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width , intial-scale=1.0 , maximum-scale=1.0 , user-scalable=no">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-compatible" content="Ie-edge">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/all.min.css">
+        <script
+        src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+       <!-- <link rel="stylesheet" href="{% static 'register.css' %}">-->
+       <style>
+        *{
+    
+    margin: 0;
+        padding: 0;
+    }
+    .body{
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .logo{
+        height: 240px;
+        width: 75px;
+        
+      
+    }
+    .main{
+      
+      display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+        padding-top: 30px;
+        /* background-color: #f5fdf5; */
+        display: flex;
+    
+
+    }
+   
+    .container{
+        width: 450px;
+        outline-style: none;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+       
+        height:auto;
+     padding: 12px;
+        background-color: #fff;
+        display: flex;
+        flex-direction:column;
+        align-items: center;
+        border: none;
+        /* border-radius: 3%; */
+        margin-top: 5px;
+        gap: 15px;
+    }
+    .login{
+        margin-bottom: 20px;
+
+        text-align: center;
+        font-weight: 800;
+        font-size: 1.2rem;
+        margin: 20px 0 10px 0;
+        font-size: 25px;
+    }
+    .email {
+     position: relative; /* set relative position for icon positioning */
+
+    background: #fff;
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    padding: 0 15px;
+    margin-bottom: 18px;
+    box-sizing: border-box;
+    }
+    .email i {
+        position: absolute;
+        left: 23px; /* Adjust the left position of the icon */
+        top: 40%; /* Center the icon vertically */
+        transform: translateY(-50%);
+        color: #3d3c3c; /* Adjust the color of the icon */
+        z-index: 1; /* Ensure the icon stays above the input */
+    }
+    .password input {
+
+background: transparent;
+outline: none;
+border: 0;
+padding-left: 30px; 
+ }
+.email input {
+
+     background: transparent;
+    outline: none;
+    border: 0;
+    padding-left: 30px; 
+        }
+.user {
+    position: relative; /* set relative position for icon positioning */
+            
+            background: #fff;
+            display: flex;
+            align-items: center;
+            border-radius: 20px;
+            padding: 0 15px;
+            margin-bottom: 18px;
+            box-sizing: border-box;
+}
+.user i {
+position: absolute;
+left: 23px; 
+gap: 5px;
+top: 40%; /* Center the icon vertically */
+transform: translateY(-50%);
+color: #3d3c3c; /* Adjust the color of the icon */
+z-index: 1; /* Ensure the icon stays above the input */
+}
+
+.user input {
+background: transparent;
+outline: none;
+border: 0;
+padding-left: 30px; 
+}
+
+input {
+
+margin-bottom: 10px; /* Add margin to the bottom of input boxes */
+border: 1px solid rgba(0, 0, 0, 0.1);
+border-radius: 7px;
+font-size: 15px;
+padding-left: 20px;
+font-weight: 500;
+color: rgba(0, 0, 0, 0.5);
+outline-style: none;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add shadow to the input */
+}
+/* Added styles for checkbox and label */
+.checkbox-container {
+display: flex;
+
+margin-bottom: 10px;
+}
+.checkbox-container p{
+color: #4b4848;
+}
+
+.checkbox-container input[type="checkbox"] {
+margin-right: 10px;
+width: 18px; /* Adjust the width as needed */
+height: 18px;
+margin-bottom: 10px;
+margin-left: 10px;
+}
+   
+.login-button {
+width: 80%;
+outline: none;
+border: 0;
+border-radius: 20px;
+padding: 7px 15px;
+background-color: #0033a0;
+color: #fff;
+font-size: 22px;
+font-weight: bold;
+cursor: pointer;
+margin-bottom: 40px;
+}   
+  
+    .login-button:hover{
+        background-color: #0055cc;
+    
+    }
+  
+   
+  
+   
+    
+    .msg {
+        text-align: center;
+        font-size: 20px;
+     
+
+    }
+
+
+
+
+
+  
+  
+
+
+*{
+margin: 0;
+padding: 0;
+font-family: sans-serif;
+}
+.cont{
+width: 100%;
+height: 100vh;
+background: #000210;
+display: flex;
+justify-content: center; /* centering horizontally */
+align-items: center; /* centering vertically */
+}
+.email-box{
+flex-basis: 100%;
+display: flex;
+align-items: center;
+justify-content: center; /* centering horizontally */
+
+}
+.contact-form{
+flex-basis: 90%;
+display: flex;
+align-items: center;
+justify-content: center; /* centering horizontally */
+
+}
+.email-box img{
+flex-basis: 90%;
+text-align: center; /* centering contents inside the box */
+
+} .password-box img{
+flex-basis: 70%;
+text-align: center; /* centering contents inside the box */
+
+}
+.password-box{
+flex-basis: 50%;
+display: flex;
+align-items: center;
+justify-content: center; /* centering horizontally */
+
+}
+h1{
+margin-bottom: 20px;
+color: #fff;
+text-align: center;
+font-weight: 800;
+}
+.user,.email,.password{
+width: 350px;
+height: 43px;
+background: #fff;
+display: flex;
+align-items: center;
+border-radius: 20px;
+padding: 0 15px;
+margin-bottom: 18px;
+box-sizing: border-box;
+}
+input{
+width: 100%;
+height: 100%;
+background: transparent;
+outline: none;
+border: 0;
+}
+.fa{
+margin-right: 20px;
+}
+
+
+@media only screen and (max-width: 570px) {
+    .main{
+        width: 80%;
+        margin-left: 30px;
+    }
+    input{
+        width: 100%;
+       
+    }
+    .login-button {
+        width: 80%;
+    }
+    .container{
+        width: 94%;
+    }
+}
+       </style>
+        
+        <title>login page</title>
+       
+      
+
+        <style>
+          
+</style>
+    </head>
+    <body>
+       
+        <div class="main">
+             {% if error %}
+        <div class="msg">
+            <h4>{{ error }}</h4>
+        </div>
+        {% endif %}
+          <!---<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe7A987fReP8ryWhuohDwXKlAkL1e7roGpZScOB5UNsupbsvAqPBTfqu_PyTp08eWOyg&usqp=CAU" width="200px" height="60px" style="mix-blend-mode:darken; "  alt=""><!--mix-blend-mode: color-burn;object-fit: contain;aspect-ratio: 1/1;-->
+            
+           <form method="POST" action="" >
+            {% csrf_token %}
+            
+                <div class="container">
+                    <h4><span class="login">Register </span></h4>
+                    <br>
+                    <div class="user">
+                    
+                        <i class="fas fa-user" ></i> <!-- Use 'fas' for solid icons -->
+                        <input type="text" name="name" placeholder="Please enter your name" required="">
+                    </div>
+                    <div class="user">
+                    
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                        <input type="text" name="mo" placeholder="Please enter your mobile number" required="">
+                    </div>
+                    <div class="email">
+                        <i class="fas fa-envelope"></i> <!-- Corrected icon class -->
+                    <input type="text" name="email" placeholder="Please enter your email" required="">
+                    </div>
+                    <div class="password">
+                    <input type="password" name="pass" id="passwordField" placeholder="Please enter your Password" required="">
+                </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" onclick="showPassword()"> 
+                        <p>Show Password</p> 
+                    </div>
+                    <button class="login-button">send</button>
+            </form> 
+                    
+
+                  
+            
+            
+        </div>
+      
+    </body>
+   
+      <script>
+        function showPassword() {
+            var passwordField = document.getElementById("passwordField");
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+            } else {
+                passwordField.type = "password";
+            }
+        }
+    </script>
+</html>

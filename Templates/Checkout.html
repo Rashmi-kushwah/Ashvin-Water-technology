@@ -1,0 +1,265 @@
+{% include 'header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping Address</title>
+  <style>
+
+    
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 60%;
+    max-width: 600px;
+    /* margin: 50px auto; */
+    padding: 20px;
+    background-color: #fff;
+  margin-top: 7%;
+    border-radius: 8px;
+}
+
+.progress-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.step {
+    width: 30px;
+    height: 30px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.step.active {
+    background-color: #007bff;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input, select {
+    margin-bottom: 20px;
+    padding:15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.checkbox input {
+    margin-right: 15px;
+    margin-top: 8px;
+}
+.but-container{
+    text-align: center;
+}
+
+
+.but {
+    padding: 8px ;
+    background: #023974;
+    color: #fff;
+    border: none;
+    border-radius: 45px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 50%;
+}
+.but:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+   
+
+.but {
+    padding: 5 20px;
+    font-size: 14px;
+}
+    .container {
+        width: 100%;
+        /* margin: 20px; */
+        padding: 15px;
+    }
+
+    .progress-bar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .step {
+        margin-bottom: 10px;
+    }
+}
+
+.progress-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.progress-step .step-number {
+    width: 30px;
+    height: 30px;
+    background: #ccc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.progress-step .step-title {
+    text-align: center;
+}
+
+.progress-step.completed .step-number {
+    background: #0056b3;
+}
+
+.progress-bar::before, .progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50%;
+    height: 2px;
+    background: #ccc;
+    z-index: -1;
+}
+
+.progress-bar::before {
+    left: 0;
+    background: #0056b3;
+}
+
+
+  </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- <div class="progress-bar">
+            <div class="progress-step completed">
+                <span class="step-number">1</span>
+                <span class="step-title">Welcome to Eureka Forbes</span>
+            </div>
+            <div class="progress-step">
+                <span class="step-number">2</span>
+                <span class="">Shipping</span>
+            </div>
+            <div class="progress-step">
+                <span class="step-number">3</span>
+                <span class="step-title">Review & Payments</span>
+            </div>
+        </div>  -->
+        <h2>Welcome to Eureka Forbes</h2>
+        <form id="checkoutForm" method="post">
+            {% csrf_token %}
+            <input type="text" id="firstName" name="firstName" placeholder="First Name" required>
+            <input type="text" id="lastName" name="lastName" placeholder="Last Name" required>
+            <input type="tel" id="mobileNumber" name="mobileNumber" placeholder="Mobile Number" required maxlength="10">
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            <input type="text" id="houseNo" name="houseNo" placeholder="House No/Door No" required>
+            <input type="text" id="street" name="street" placeholder="Street" required>
+            <input type="text" id="street1" name="street1" placeholder="Street1" required>
+            <input type="text" id="street2" name="street2" placeholder="Street2" required>
+            <input type="text" id="pinCode" name="pinCode" placeholder="Pincode" required>
+            <input type="text" id="city" name="city" placeholder="City" required>
+        <select id="country" name="country">
+            <option value="india">India</option>
+        </select>
+        <label for="region">Region/State/Province</label>
+        <select id="region" name="region" required>
+            <option value="">Please select a region, state or province</option>
+            <option value="Andaman & Nicobar">Andaman & Nicobar</option>
+            <option value="Uttar Pradesh">Uttar Pradesh</option>
+            <option value="Andhra Pradesh">Andhra Pradesh</option>
+            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+            <option value="Assam">Assam</option>
+            <option value="Bihar">Bihar</option>
+            <option value="Chandigarh">Chandigarh</option>
+            <option value="Chhattisgarh">Chhattisgarh</option>
+            <option value="Dadra & Nagar Haveli">Dadra & Nagar Haveli</option>
+            <option value="Daman & Diu">Daman & Diu</option>
+            <option value="Goa">Goa</option>
+            <option value="Gujarat">Gujarat</option>
+            <option value="Haryana">Haryana</option>
+            <option value="Himachal Pradesh">Himachal Pradesh</option>
+            <option value="Jammu & Kashmir">Jammu & Kashmir</option>
+            <option value="Jharkhand">Jharkhand</option>
+            <option value="Karnataka">Karnataka</option>
+            <option value="Kerala">Kerala</option>
+            <option value="Ladakh">Ladakh</option>
+            <option value="Lakshadweep">Lakshadweep</option>
+        </select>
+        <div class="checkbox">
+            <input type="checkbox" id="billingSameAsShipping" name="billingSameAsShipping">
+            <label for="billingSameAsShipping">My billing and shipping address are the same</label>
+        </div>
+        <div class="but-container">
+            <button class="but" type="submit">Deliver to this address</button>
+        </div>
+    </form>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>
+<!-- <script>
+    document.getElementById('checkoutForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the form from submitting
+
+    // Get form values
+    var firstName = document.getElementById('firstName').value.trim();
+    var lastName = document.getElementById('lastName').value.trim();
+    var mobileNumber = document.getElementById('mobileNumber').value.trim();
+    var email = document.getElementById('email').value.trim();
+
+    // Validate form values
+    if (firstName === '' || lastName === '' || mobileNumber === '' || email === '') {
+        alert('Please fill in all fields.');
+    } else {
+        alert('Form submitted successfully!');
+        // Here you can add your form submission code
+    }
+});
+
+</script> -->

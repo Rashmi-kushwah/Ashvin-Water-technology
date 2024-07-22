@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Footer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Basic Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            /* background-color: #f2f2f2; */
+        }
+
+       
+    .footer {
+    margin-top: 10px;
+    background-color:  rgb(51, 50, 50);
+        /* background-color: rgb(236, 242, 245); */
+        color: #fff;
+        padding: 40px 20px;
+        font-size: 14px;
+        line-height: 1.6;
+      text-align: center;
+  }
+  
+    .footer a {
+        color: #fff;
+        text-decoration: none;
+        transition: text-decoration 0.3s ease; 
+    }
+
+    .footer a:hover {
+        text-decoration: underline; /* Underline on hover */
+    }
+
+    .footer .container {
+        display: flex;
+   
+        max-width: 1500px;
+        margin: 0 auto;
+    }
+
+    
+    .footer .section {
+        flex: 1;
+     
+    }
+
+    .footer .section h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        padding-bottom: 5px;
+        font-weight: bold;
+        /* border-bottom: 1px solid #fff; */
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .footer .section ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: left;
+    }
+
+    .footer .section ul li {
+        margin-bottom: 8px;
+    }
+
+    /* .footer .social {
+        flex: 1;
+        max-width: 200px;
+        text-align: right;
+    } */
+
+    .footer .social a {
+        display: inline-block;
+        margin-left: 10px;
+        color: rgb(51, 50, 50);
+        font-size: 20px;
+        transition: color 0.3s ease; /* Smooth transition for color */
+    }
+
+    .footer .social a:hover {
+        color: #ccc; /* Light grey color on hover */
+    }
+
+    /* Media Queries */
+    @media (max-width: 768px) {
+        .footer .container {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer .section,
+        .footer .social,
+        .footer .logo {
+            max-width: 100%;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .footer .social {
+            margin-top: 20px;
+        }
+    }
+    .list {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+        /* .footer img {
+            width: 100%;
+            height: auto;
+            display: flex;
+        
+          
+        } */
+
+        .im {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .im img {
+        
+        height: auto;
+        margin: 0 10px; /* Adjust margin between icons */
+    }
+        .map {
+            color: blue;
+        }
+        .appstor{
+            margin: 5px;
+            margin-top: 15px;
+        }
+        
+        .appstor{
+                margin: 5px;
+                margin-top: 15px;
+            }
+            .footer .section ul li {
+                text-align: center;
+            }
+    
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Montserrat:wght@400&display=swap');
+
+
+.logo-link {
+    text-decoration: none;
+}
+
+.logo {
+    font-family: 'Arial', sans-serif;
+   /* margin-right: 50px; */
+    background-color: #f4f4f9; /* Light background for contrast */
+    text-align: center;
+    padding: 3px 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* transition: transform 0.3s, box-shadow 0.3s; */
+ 
+}
+
+.logo h4 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    color: #d4af37;
+    margin: 0;
+    padding: 0;
+}
+
+.logo p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    color: #333;
+    margin: 0;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.logo:hover {
+    /* transform: translateY(-5px); */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  
+}
+@media (max-width: 768px) {
+    .logo {
+
+    padding: 2px 20px;
+
+ 
+}
+}
+    </style>
+</head>
+<body>
+    <footer class="footer">
+        <div class="container">
+            <a href="/" style="text-decoration: none;">
+                <div class="logo">
+                    <h4>Ashvin</h4>
+                    <p>Watertechnology</p>
+                </div>
+            </a>
+        
+            <div class="section">
+                <h3>Water Purifier</h3>
+                <ul>
+                    <li>By Technology</a></li>
+                    <li>By Features</a></li>
+                    <li>By Brand</a></li>
+                    <li>Accessories</a></li>
+                </ul>
+            </div>
+            <div class="section">
+                <h3>Vacuum Cleaner</h3>
+                <ul>
+                    <li>By Technology</a></li>
+                    <li>By Type</a></li>
+                    <li>By Features</a></li>
+                    <li>By Brand</a></li>
+                    <li>Accessories</a></li>
+                </ul>
+            </div>
+            <div class="section">
+                <h3>Air Purifier</h3>
+                <ul>
+                    <li>Dr Aeroguard</a></li>
+                    <li>Aeroguard</a></li>
+                    <!-- <li>Forbes</a></li>
+                    <li>Accessories</a></li> -->
+                </ul>
+            </div>
+            <div class="section">
+                <h3>Water Solution</h3>
+                <ul>
+                    <li>Water Softners</a></li>
+                    <li>Sediment Filter</a></li>
+                    <!-- <li>Activated Carbon Filter</a></li>
+                    <li>Iron Remover</a></li>
+                    <li>Water Solutions Accessories</a></li> -->
+                </ul>
+            </div>
+            <div class="section">
+                <h3>Service</h3>
+                <ul>
+                    <li>Book installation</a></li>
+                    <li>Book service</a></li>
+                    <li>Buy AMC</a></li>
+                    <li>Order & returns</a></li>
+                    <!-- <li>Raise & track complaint</a></li>
+                    <li>Contact customer support</a></li>
+                    <li>Locate a store</a></li>
+                    <li>Authorized Service Centre</a></li> -->
+                </ul>
+            </div>
+            <div class="section">
+                <h3>Account</h3>
+                <ul>
+                    <li>Your orders</a></li>
+                    <li>Your service requests</a></li>
+                    <!-- <li>Your AMC</a></li>
+                    <li>Your profile</a></li> -->
+                </ul>
+            </div>
+            <div class="section">
+                <h3>Commercial Solutions</h3>
+                <ul>
+                    <li>Water Purifiers</a></li>
+                    <li>Air Purifiers</a></li>
+                    <!-- <li>Chemical</a></li> -->
+                </ul>
+            </div>
+            <div class="section">
+                <h3>About Eureka Forbes</h3>
+                <ul>
+                    <li>About Us</a></li>
+                    <li>CSR</a></li>
+                    <li>Investor Relations</a></li>
+                    <!-- <li>Press Release</a></li>
+                    <li>Blog</a></li>
+                    <li>Careers</a></li>
+                    <li>Contact Eureka Forbes</a></li> -->
+                    <div class="appstor">  
+                        <img src="https://images.meesho.com/images/pow/playstore-icon-big_400.webp" width="150px" alt="">
+                    </div>
+                    <div class="appstor">     
+                        <img src="https://images.meesho.com/images/pow/appstore-icon-big_400.webp"  width="150px" alt="">
+                    </div>
+
+                </ul>
+            </div>
+        </div>
+        <div class="bottom-bar">
+            <p>
+                Manufacturer/ Importer details<br>
+                Eureka Forbes Limited<br>
+                (Formerly Forbes Enviro Solutions Limited)<br><br>
+                Registered Office and Corporate Office :<br>
+                B1/B2, 701, 7th Floor, Marathon Innova, Off. Ganpatrao Kadam Marg, Lower Parel (West), Mumbai, Maharashtra – 400013<br><br>
+                Corporate Identity Number (CIN) :<br>
+                L27310MH2008PLC188478<br><br>
+                More ways to shop: Find a store near you or call 1860 2661 177<br>
+                Disclaimer - The product colours and shades displayed on this website are only indicative and cannot be considered to be a precise representation of the actual colours.<br><br>
+                &copy; 2024 Eureka Forbes. All Rights Reserved. Privacy Terms of Use Legal Sitemap
+            </p>
+        </div>
+        <!-- <div class="social">
+            <i class="fab fa-facebook-f"></i></a>
+            <i class="fab fa-whatsapp"></i></a>
+            <i class="fab fa-twitter"></i></a>
+        </div> -->
+        <div class="list">
+           
+            <div class="im">
+            <div class="fc">
+                <img src="https://images.meesho.com/images/pow/facebook.png" alt="">
+                </div>
+            <div class="insta">
+                <img src="https://images.meesho.com/images/pow/instagram.png" alt="">
+                </div>
+            <div class="twt">
+            <img src="https://images.meesho.com/images/pow/twitter.png" alt="">
+            </div>
+            <div class="yout">
+            <img src="https://images.meesho.com/images/pow/youtube.png" alt="">
+            </div>
+            <div class="link">
+                <img src="https://images.meesho.com/images/pow/linkedin.png" alt="">
+            </div>
+
+        </div>
+        <!-- <div class="appstor">  
+            <img src="https://images.meesho.com/images/pow/playstore-icon-big_400.webp" width="200px" alt="">
+        </div>
+        <div class="appstor">     
+            <img src="https://images.meesho.com/images/pow/appstore-icon-big_400.webp"  width="200px" alt="">
+        </div> -->
+    </div> 
+    </footer>
+</body>
+</html>

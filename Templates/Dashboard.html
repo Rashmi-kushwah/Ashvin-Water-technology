@@ -1,0 +1,256 @@
+
+{% extends 'admin_nav.html' %}
+
+{% block main %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+   body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar {
+    background-color: rgb(46, 45, 45);
+    height: 100vh;
+    padding: 20px;
+}
+
+.sidebar .logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar .nav-link {
+    color: #fff;
+    font-weight: bold;
+    /* transition: background-color 0.3s, color 0.3s; */
+}
+
+.sidebar .nav-link.active {
+    background-color: #fff;
+    border-radius: 5px;
+    color: #d4af37;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #fff;
+    color: #d4af37;
+}
+
+.sidebar .nav-link:hover i {
+    color: #d4af37;
+}
+
+.nav-link i {
+    margin-right: 10px;
+    transition: color 0.3s;
+}
+
+.main-content {
+    padding: 20px;
+}
+
+.header {
+    /* background-color: #ccffcc; */
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.dashboard h2 {
+    color: red;
+}
+
+.dashboard h3 {
+   border-top: 1px solid green;
+    border-bottom: 1px solid green;
+    color: green;
+    text-align: center;
+    padding: 7px;
+}
+
+.card {
+    border-radius: 10px; 
+    margin-bottom: 20px;
+    transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Initial subtle shadow */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+    opacity: 0.95;
+}
+
+.card-body {
+    text-align: center;
+    /* border-radius: 20px;  */
+}
+
+.card-title {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Montserrat:wght@400&display=swap');
+
+
+.logo-link {
+    text-decoration: none;
+}
+
+.logo {
+    font-family: 'Arial', sans-serif;
+   
+    background-color: #f4f4f9; /* Light background for contrast */
+    text-align: center;
+    padding: 5px 30px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* transition: transform 0.3s, box-shadow 0.3s; */
+ 
+}
+
+.logo h4 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    color: #d4af37;
+    margin: 0;
+    padding: 0;
+}
+
+.logo p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    color: #333;
+    margin: 0;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.logo:hover {
+    /* transform: translateY(-5px); */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  
+}
+@media (max-width: 768px) {
+    .logo {
+
+    padding: 2px 20px;
+
+ 
+}
+}
+    </style>
+</head>
+<body>
+    <!-- <div class="container-fluid"> -->
+        <!-- <div class="row"> -->
+            <!-- <div class="col-md-2 sidebar">
+                <a href="/admin_panell/dashboard/" style="text-decoration: none;">
+                    <div class="logo">
+                        <h4>Ashvin</h4>
+                        <p>Watertechnology</p>
+                    </div>
+                </a>
+            
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin_panell/orders/"><i class="fas fa-shopping-cart"></i> Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin_panell/"><i class="fas fa-credit-card"></i> Payment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin_panell/Inventory/"><i class="fas fa-boxes"></i> Inventory</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin_panell/Add_product_details/">
+                            <i class="fas fa-box-open"></i> Product
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin_panell/Edit_banner/">
+                            <i class="fas fa-image"></i> Banner
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin_panell/"><i class="fas fa-undo"></i> Returns</a>
+                    </li>
+                </ul>
+            </div> -->
+            <!-- <div class="col-md-10 main-content">
+                <div class="header">
+                    <h2>Admin Dashboard</h2>
+                </div> -->
+                <div class="dashboard">
+                    
+                    <h3>Welcome  To Admin Dashboard</h3>
+                    <div class="row">
+                     
+                        <div class="col-md-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">total Orders</h5>
+                          <hr>
+                          <p>{{ all_orders_count }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Payment</h5>
+                                   <hr>
+                                   <p>$333</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Inventory</h5>
+                                   <hr>
+                                   <p>$333</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Returns</h5>
+                                 <hr>
+                                 $444
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <!-- Add more cards as needed -->
+                    </div>
+                </div>
+            <!-- </div> -->
+        <!-- </div> -->
+    <!-- </div> -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock %}

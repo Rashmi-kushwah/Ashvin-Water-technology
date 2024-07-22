@@ -1,0 +1,479 @@
+{% include 'header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+     
+        }
+
+        .product-page {
+            text-align: center;
+            padding: 2rem 1rem;
+            background-color: #fff;
+            margin-top: 40px;
+        }
+
+        .product-images {
+            margin-bottom: 2rem;
+        }
+
+        .product-images .main-image img {
+            width: 100%;
+            height: auto;
+            max-height: 380px;
+            object-fit: contain;
+          
+        }
+
+        .product-images .thumbnail-images {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .product-images .thumbnail-images img {
+            width: 7%;
+            margin: 0.2rem;
+            cursor: pointer;
+            border: 1px solid #ddd;
+        }
+
+        .product-details {
+            max-width: 80%;
+            margin: 0 auto;
+        }
+
+        .product-details h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            /* text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden; */
+        }
+
+        .price {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .price .original-price {
+            text-decoration: line-through;
+            margin-left: 1rem;
+            color: #888;
+        }
+        .btn-container {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-around; /* Centers buttons with equal space between them */
+    flex-wrap: wrap; /* Allows buttons to wrap to the next line on smaller screens */
+}
+
+.btn {
+    background-color: #23548a;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 25px;
+    flex: 1; /* Ensures buttons grow to fill available space */
+    max-width: 200px; /* Limits maximum width of each button */
+    text-align: center; /* Centers text inside buttons */
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+       
+
+        .details {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 1rem;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .detail-label {
+            font-weight: bold;
+        }
+        .specifications1{
+            padding: 2rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .specifications1 th{
+            color: rgb(104, 103, 103);
+            
+        }
+        .specifications1 td{
+            color: grey;
+            font-family: Arial,  sans-serif;
+        }
+        .specifications1 table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .specifications1 td {
+            /* border: 1px solid #ddd; */
+            padding: 0.5rem;
+        }
+
+        .features, .specifications {
+            padding: 2rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .specifications th{
+            color: rgb(104, 103, 103);
+            
+        }
+        .specifications td{
+            color: grey;
+            font-family: Arial,  sans-serif;
+        }
+        .features ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features li {
+            margin: 0.5rem 0;
+        }
+
+        .specifications table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .specifications td {
+            /* border: 1px solid #ddd; */
+            padding: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .product-images .main-image img {
+                width: 100%;
+            }
+
+            .product-images .thumbnail-images img {
+                width: 20%;
+            }
+
+            .product-details h1 {
+                font-size: 1.5rem;
+            }
+            .detail-item {
+        flex-direction: column;
+        /* align-items: flex-start; */
+        margin: 0.5rem 0;
+    }
+
+    .detail-label, .detail-value {
+        white-space: normal; /* Allows wrapping on smaller screens */
+    }
+        }
+
+
+        .technical-specifications table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .technical-specifications th, .technical-specifications td {
+            padding: 8px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+           
+            .technical-specifications h2 {
+                font-size: 24px;
+            }
+            .specifications table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap; /* Prevents text wrapping, making the table scrollable horizontally */
+    }
+
+    .specifications th, .specifications td {
+        display: block;
+        text-align: left;
+        white-space: normal; /* Allows text to wrap within cells */
+    }
+
+    .specifications th {
+        background-color: #f0f0f0;
+    }
+
+    .specifications tr {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+    }
+    .messages {
+    
+    padding: 20px;
+
+    font-size: 13px;
+   
+}
+
+
+        }  
+        
+        .messages {
+    list-style-type: none; /* Removes bullet points */
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color:  #155724;
+}
+
+.message {
+    margin: 5px 0;
+    padding: 8px 15px;
+    background-color: #dff0d8; /* Light green background */
+    border: 1px solid #c3e6cb; /* Green border */
+    color: #155724; /* Dark green text */
+    border-radius: 4px;
+}
+
+    </style>
+</head>
+<body>
+    <main class="product-page">
+        {% for product in get_product %}
+        <div class="product-images">
+            <div class="main-image">
+                <img src="{{ product.img1.url }}" id="target" alt="Main Product">
+            </div>
+            <div class="thumbnail-images">
+                {% if product.img1 %}
+                <img src="{{ product.img1.url }}" alt="Thumbnail 1" onclick="document.getElementById('target').src='{{ product.img1.url }}'">
+                {% endif %}
+                {% if product.img2 %}
+                <img src="{{ product.img2.url }}" alt="Thumbnail 2" onclick="document.getElementById('target').src='{{ product.img2.url }}'">
+                {% endif %}
+                {% if product.img3 %}
+                <img src="{{ product.img3.url }}" alt="Thumbnail 3" onclick="document.getElementById('target').src='{{ product.img3.url }}'">
+                {% endif %}
+                {% if product.img4 %}
+                <img src="{{ product.img4.url }}" alt="Thumbnail 4" onclick="document.getElementById('target').src='{{ product.img4.url }}'">
+                {% endif %}
+                {% if product.img5 %}
+                <img src="{{ product.img5.url }}" alt="Thumbnail 5" onclick="document.getElementById('target').src='{{ product.img5.url }}'">
+                {% endif %}
+            </div>
+        </div>
+       <!--  <div class="product-details">-->
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <h1 style="font-weight: bolder;">Aquaguard Nova RO+UV+MTDS Water Purifier</h1>
+            <p style="font-size: large; color: grey;">Delivers pure & safe water free of bacteria, virus & protozoa & chemical impurities through its superior RO & UV technology.</p>
+            <div class="details">
+                <div class="detail-item">
+                    <div class="detail-label">Technology:</div>
+                    <div class="detail-value">{{ product.technology }}</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Brand:</div>
+                    <div class="detail-value">{{ product.brand }}</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Warranty:</div>
+                    <div class="detail-value">{{ product.warranty }}</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">EMI Options:</div>
+                    <div class="detail-value">{{ product.emi_options }}</div>
+                </div>
+            </div> 
+            <div class="price">
+                <span class="current-price">₹999</span>
+                <span class="original-price">₹1555.00</span>
+            </div>
+            <div class="btn-container">
+                <form method="POST" action="/Add_Cart/">
+                    {% csrf_token %}
+                    <button class="btn" name="product_id" id="addToCartBtn" value="{{product.Product_id}}">Add to Cart</button>
+                    <button class="btn" name="buy_id" id="buyNowBtn" value="{{product.Product_id}}">Buy Now</button>
+                </form>
+            </div>
+        </div>
+    </div>
+        <hr>
+        <section class="features">
+            <h2>Top Features</h2>
+            <ul>
+                <li>Active Copper Zinc Booster Technology</li>
+                <li>UV & Boiling</li>
+                <li>RO Purification</li>
+                <li>Smart Purifier</li>
+                <li>High Storage Capacity</li>
+                <li>MTDS</li>
+                <li>Supreme Aesthetics</li>
+                <li>Smart LED Indication</li>
+                <li>Flexible Installation</li>
+                <li>Long Cartridge Life</li>
+                <li>Energy Saving Mode</li>
+                <li>1 Year No RO Membrane Warranty</li>
+            </ul>
+        </section>
+
+        <section class="specifications1">
+            <h2>Technical Specifications</h2>
+            <table>
+                <tr>
+                    <th>Weight</th>
+                    <td>{{product.weight}}</td>
+                </tr>
+                <tr>
+                    <th>Dimensions (WxDxH)</th>
+                    <td>{{product.dimensions}}</td>
+                </tr>
+                <tr>
+                    <th>Installation Type</th>
+                    <td>{{product.installation_type}}</td>
+                </tr>
+                <tr>
+                    <th>Storage Capacity</th>
+                    <td>{{product.storage_capacity}}</td>
+                </tr>
+                <tr>
+                    <th>Purification Modules</th>
+                    <td>{{product.purification_modules}}</td>
+                </tr>
+                <tr>
+                    <th>Input Water Pressure</th>
+                    <td>{{product.input_water_pressure}}</td>
+                </tr>
+                <tr>
+                    <th>Input Water Temperature</th>
+                    <td>{{product.input_water_temperature}}</td>
+                </tr>
+                <tr>
+                    <th>Input Water Chlorine (Max)</th>
+                    <td>{{product.input_water_chlorine_max}}</td>
+                </tr>
+                <tr>
+                    <th>Input Water TDS</th>
+                    <td>{{product.input_water_tds}}</td>
+                </tr>
+                <tr>
+                    <th>UV Lamp</th>
+                    <td>{{product.uv_lamp}}</td>
+                </tr>
+                <tr>
+                    <th>UV Lamp Life</th>
+                    <td>{{product.uv_lamp_life}}</td>
+                </tr>
+                <tr>
+                    <th>Power Consumption</th>
+                    <td>{{product.power_consumption}}</td>
+                </tr>
+                <tr>
+                    <th>Operating Input Voltage</th>
+                    <td>{{product.operating_input_voltage}}</td>
+                </tr>
+                <tr>
+                    <th>Included in the Box</th>
+                    <td>{{product.included_in_box}}</td>
+                </tr>
+                <tr>
+                    <th>Carton Dimensions (WxDxH)</th>
+                    <td>{{product.product_warranty}}</td>
+                </tr>
+                <tr>
+                    <th>Product Warranty</th>
+                    <td>{{product.warranty}}</td>
+                </tr>
+                <!-- <tr>
+                    <th>Applicable TDS Range</th>
+                    <td>{{product.price}}</td>
+                </tr> -->
+               
+            </table>
+        </section>
+        <section class="specifications">
+            <h2>Product Information</h2>
+            <table>
+                <tr>
+                    <th>Full Name and Address of the Manufacturer</th>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <th>Full Name and Address of the Importer</th>
+                    <td> Eureka Forbes Limited (Formerly Forbes Enviro Solutions Limited) Registered Office Address: B1/B2, 701, 7th Floor, Marathon Innova, Off. Ganpatrao Kadam Marg, Lower Parel (West), Mumbai, Maharashtra – 400013 CIN#L27310MH2008PLC188478</td>
+                </tr>
+              <tr>
+                    <th>ICountry of Origin</th>
+                    <td> People's Republic of China</td>
+                </tr>
+                <tr>
+                    <th>Details of the items in the package (Number of Units/Quantity)</th>
+                    <td>Vacuum Cleaner 1N, Floor cum Carpet Brush 1N, Extension Tubes 2Nos, Hose Pipe 1N, Upholstery cleaner 1N, Crevice Nozzle 1N</td>
+                </tr>
+                <tr>
+                    <th>Full Name and Address of the Packer (when/if applicable)</th>
+                    <td>-</td>
+                </tr>
+                  <tr>
+                    <th>Common/Generic name of the Product</th>
+                    <td> Vacuum Cleaner</td>
+                </tr>
+                 <tr>
+                    <th>Customer Complaint</th>
+                    <td style="font-weight: bold;"> 
+                        Phone Number: 18602661177  <br>
+                        Email Id: customercare@eurekaforbes.com</td>
+                </tr>
+               <tr>
+                    <th>Product Reference</th>
+                    <td> GFCDSFDVC00000</td>
+                </tr>
+               
+               
+            </table>
+        </section> 
+
+
+
+
+
+       
+    </main>
+    {% endfor %}
+    <script src="script.js"></script>
+</body>
+</html>
+{% include 'footer.html' %}
